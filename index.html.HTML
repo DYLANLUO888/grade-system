@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园成绩管理系统</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #f8f9fa;
+            --danger-color: #ea4335;
+            --success-color: #34a853;
+            --text-color: #202124;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+        
+        header {
+            position: relative;
+            height: 240px;
+            background: linear-gradient(120deg, #4a69bd 0%, #1e3799 100%);
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 3;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: url('https://img-blog.csdnimg.cn/20210224114306520.jpg') center/cover;
+            border: 4px solid white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        
+        .content {
+            padding: 35px;
+            background: url('https://img.58tg.com/up/allimg/tx29/0820102343868.jpg') no-repeat;
+            background-size: 40% auto;
+            background-position: right bottom;
+        }
+        
+        .tab-container {
+            display: flex;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #e0e7ff, #d1e0ff);
+            border-radius: 60px;
+            padding: 6px;
+            box-shadow: inset 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 18px 0;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 18px;
+            border-radius: 60px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 2;
+        }
+        
+        .tab.active {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.4);
+        }
+        
+        .panel {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .panel.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .form-group {
+            margin-bottom: 28px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+            padding-left: 10px;
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #d1d9ff;
+            border-radius: 12px;
+            font-size: 18px;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        input:focus, select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.2);
+        }
+        
+        .input-icon {
+            position: relative;
+        }
+        
+        .input-icon i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            cursor: pointer;
+            font-size: 22px;
+        }
+        
+        button {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0d47a1 100%);
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 18px 0;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 6px 15px rgba(66, 133, 244, 0.4);
+            width: 100%;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+        
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(66, 133, 244, 0.5);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--success-color) 0%, #2e7d32 100%);
+            box-shadow: 0 6px 15px rgba(52, 168, 83, 0.4);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger-color) 0%, #c62828 100%);
+            box-shadow: 0 6px 15px rgba(234, 67, 53, 0.4);
+        }
+        
+        .results {
+            margin-top: 35px;
+            padding: 30px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 20px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+        
+        .results h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            font-size: 26px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        th, td {
+            padding: 18px 20px;
+            text-align: center;
+        }
+        
+        thead {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0d47a1 100%);
+            color: white;
+        }
+        
+        th {
+            font-weight: 500;
+            font-size: 18px;
+        }
+        
+        tbody tr {
+            background: rgba(255, 255, 255, 0.9);
+            transition: background 0.3s;
+        }
+        
+        tbody tr:nth-child(even) {
+            background: rgba(240, 245, 255, 0.9);
+        }
+        
+        tbody tr:hover {
+            background: rgba(230, 240, 255, 0.9);
+            transform: scale(1.01);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .summary {
+            margin-top: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #43a047 0%, #2e7d32 100%);
+            color: white;
+            border-radius: 15px;
+            font-weight: 500;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+        
+        .action-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            width: auto;
+            border-radius: 10px;
+        }
+        
+        .message {
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+            display: none;
+            font-size: 18px;
+        }
+        
+        .success {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            color: var(--success-color);
+            border: 2px solid #a5d6a7;
+        }
+        
+        .error {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            color: var(--danger-color);
+            border: 2px solid #ef9a9a;
+        }
+        
+        .tutorial {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            border-radius: 20px;
+            border-left: 8px solid #ffc107;
+        }
+        
+        .tutorial h3 {
+            margin-bottom: 20px;
+            color: #ff8f00;
+            font-size: 24px;
+            text-align: center;
+        }
+        
+        .tutorial-item {
+            margin: 25px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .step-icon {
+            min-width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ffc107 0%, #ff8f00 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-content h4 {
+            font-size: 20px;
+            color: #ff8f00;
+            margin-bottom: 12px;
+        }
+        
+        .step-content p {
+            margin: 10px 0;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+        
+        .image-customization {
+            margin-top: 35px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #eeeeee 100%);
+            border-radius: 20px;
+            border: 2px dashed #9e9e9e;
+        }
+        
+        .image-form-group {
+            margin-bottom: 25px;
+        }
+        
+        .image-box {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .preview {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #0d47a1 0%, #1e88e5 100%);
+            color: white;
+            font-size: 18px;
+        }
+        
+        .deploy-badge {
+            display: inline-block;
+            background: white;
+            color: #0d47a1;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            header {
+                height: auto;
+                padding: 60px 20px 20px;
+            }
+            
+            .logo {
+                top: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 80px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+                background-size: 0;
+            }
+            
+            .tab-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .image-box {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"></div>
+            <div class="banner-content">
+                <h1>校园成绩管理系统</h1>
+                <p class="subtitle">安全、高效、便捷的成绩管理平台</p>
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="tab-container">
+                <div class="tab active" data-tab="query">成绩查询</div>
+                <div class="tab" data-tab="edit">成绩管理</div>
+                <div class="tab" data-tab="custom">图片定制</div>
+            </div>
+            
+            <!-- 查询面板 -->
+            <div class="panel active" id="query-panel">
+                <div class="form-group">
+                    <label for="student-id">学号/工号</label>
+                    <input type="text" id="student-id" placeholder="请输入您的学号或工号">
+                </div>
+                
+                <button id="query-btn">
+                    <i class="bi bi-search"></i> 查询成绩
+                </button>
+                
+                <div class="results" id="query-results">
+                    <h2>成绩信息</h2>
+                    <table id="grades-table">
+                        <thead>
+                            <tr>
+                                <th>科目</th>
+                                <th>分数</th>
+                                <th>等级</th>
+                                <th>评级</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <div class="summary">
+                        <p>平均分: <span id="avg-score">-</span> | 最高分: <span id="max-score">-</span> | 最低分: <span id="min-score">-</span></p>
+                    </div>
+                </div>
+                
+                <div class="message" id="message"></div>
+            </div>
+            
+            <!-- 管理面板 -->
+            <div class="panel" id="edit-panel">
+                <div class="form-group input-icon">
+                    <label for="admin-password">管理员密码</label>
+                    <input type="password" id="admin-password" placeholder="输入管理员密码" value="admin123">
+                    <i class="bi bi-eye" id="toggle-password"></i>
+                </div>
+                
+                <button id="login-btn">
+                    <i class="bi bi-key"></i> 进入管理模式
+                </button>
+                
+                <div class="admin-panel" style="display:none">
+                    <div class="form-group">
+                        <label for="student-select">选择学生</label>
+                        <select id="student-select">
+                            <option value="">-- 选择学生 --</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">科目名称</label>
+                        <input type="text" id="subject" placeholder="输入科目名称（例如：数学）">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="score">考试成绩</label>
+                        <input type="number" id="score" min="0" max="100" placeholder="输入0-100分的分数">
+                    </div>
+                    
+                    <div style="display: flex; gap: 12px; margin-top: 10px;">
+                        <button class="btn-secondary" id="add-btn">
+                            <i class="bi bi-plus-circle"></i> 添加成绩
+                        </button>
+                        <button class="btn-danger" id="clear-btn">
+                            <i class="bi bi-trash"></i> 重置数据
+                        </button>
+                    </div>
+                    
+                    <div class="results">
+                        <h2>当前学生成绩</h2>
+                        <table id="edit-grades-table">
+                            <thead>
+                                <tr>
+                                    <th>科目</th>
+                                    <th>分数</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 图片定制面板 -->
+            <div class="panel" id="custom-panel">
+                <div class="tutorial">
+                    <h3><i class="bi bi-card-image"></i> 图片定制指南</h3>
+                    
+                    <div class="tutorial-item">
+                        <div class="step-icon">1</div>
+                        <div class="step-content">
+                            <h4>顶部横幅图片</h4>
+                            <p>在下方输入图片URL，替换顶部横幅背景</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tutorial-item">
+                        <div class="step-icon">2</div>
+                        <div class="step-content">
+                            <h4>左侧Logo图片</h4>
+                            <p>输入方形图片URL，用于左上角Logo</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tutorial-item">
+                        <div class="step-icon">3</div>
+                        <div class="step-content">
+                            <h4>背景图片</h4>
+                            <p>设置页面背景图片（推荐使用浅色背景）</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-customization">
+                    <h3>图片设置</h3>
+                    
+                    <div class="image-form-group">
+                        <label for="banner-image">横幅图片URL</label>
+                        <input type="text" id="banner-image" 
+                               placeholder="输入横幅图片链接" 
+                               value="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80">
+                    </div>
+                    
+                    <div class="image-form-group">
+                        <label for="logo-image">Logo图片URL</label>
+                        <input type="text" id="logo-image" 
+                               placeholder="输入Logo图片链接" 
+                               value="https://img-blog.csdnimg.cn/20210224114306520.jpg">
+                    </div>
+                    
+                    <div class="image-form-group">
+                        <label for="bg-image">背景图片URL</label>
+                        <input type="text" id="bg-image" 
+                               placeholder="输入背景图片链接" 
+                               value="https://img.58tg.com/up/allimg/tx29/0820102343868.jpg">
+                    </div>
+                    
+                    <button id="update-images" class="btn-secondary">
+                        <i class="bi bi-arrow-repeat"></i> 更新图片
+                    </button>
+                    
+                    <div class="image-box">
+                        <div class="preview">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                                 id="banner-preview">
+                        </div>
+                        <div class="preview">
+                            <img src="https://img-blog.csdnimg.cn/20210224114306520.jpg" 
+                                 id="logo-preview">
+                        </div>
+                        <div class="preview">
+                            <img src="https://img.58tg.com/up/allimg/tx29/0820102343868.jpg" 
+                                 id="bg-preview">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 使用说明和部署指南 -->
+            <div class="tutorial">
+                <h3><i class="bi bi-cloud-upload"></i> 国内部署指南</h3>
+                
+                <div class="tutorial-item">
+                    <div class="step-icon"><i class="bi bi-1-square"></i></div>
+                    <div class="step-content">
+                        <h4>码云 Gitee 部署</h4>
+                        <p>1. 注册码云账号（国内可用，无需翻墙）</p>
+                        <p>2. 创建新仓库，将本页代码复制为index.html</p>
+                        <p>3. 在仓库设置中开启 "Gitee Pages" 服务</p>
+                        <p>4. 即可获得类似：https://你的用户名.gitee.io/仓库名</p>
+                    </div>
+                </div>
+                
+                <div class="tutorial-item">
+                    <div class="step-icon"><i class="bi bi-2-square"></i></div>
+                    <div class="step-content">
+                        <h4>腾讯云 Webify 部署</h4>
+                        <p>1. 访问腾讯云 Webify（cloud.tencent.com/product/webify）</p>
+                        <p>2. 创建新应用，选择"静态网站"</p>
+                        <p>3. 上传HTML文件，即可获得免费部署地址</p>
+                        <p>4. 自动绑定腾讯云CDN，全国高速访问</p>
+                    </div>
+                </div>
+                
+                <div class="tutorial-item">
+                    <div class="step-icon"><i class="bi bi-3-square"></i></div>
+                    <div class="step-content">
+                        <h4>阿里云 OSS 部署</h4>
+                        <p>1. 注册阿里云账号并开通OSS服务</p>
+                        <p>2. 创建Bucket并设置为"公共读"权限</p>
+                        <p>3. 上传index.html文件并开启静态网站托管</p>
+                        <p>4. 获取OSS提供的访问网址</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>校园成绩管理系统 © 2023 | 数据存储在浏览器本地</p>
+            <a href="#" class="deploy-badge">立即部署到云端</a>
+        </footer>
+    </div>
+
+    <script>
+        // 初始学生示例数据
+        let students = [
+            {
+                id: 'S2023001',
+                name: '张三',
+                grades: [
+                    { subject: '高等数学', score: 92 },
+                    { subject: '大学英语', score: 85 },
+                    { subject: '程序设计', score: 88 }
+                ]
+            },
+            {
+                id: 'S2023002',
+                name: '李四',
+                grades: [
+                    { subject: '高等数学', score: 78 },
+                    { subject: '大学英语', score: 90 },
+                    { subject: '程序设计', score: 82 }
+                ]
+            },
+            {
+                id: 'S2023003',
+                name: '王五',
+                grades: [
+                    { subject: '高等数学', score: 86 },
+                    { subject: '大学英语', score: 75 },
+                    { subject: '程序设计', score: 91 }
+                ]
+            }
+        ];
+        
+        // 管理员密码
+        const ADMIN_PASSWORD = 'admin123';
+        
+        // 页面元素
+        const tabs = document.querySelectorAll('.tab');
+        const panels = document.querySelectorAll('.panel');
+        const messageDiv = document.getElementById('message');
+        const passwordInput = document.getElementById('admin-password');
+        const passwordToggle = document.getElementById('toggle-password');
+        const studentSelect = document.getElementById('student-select');
+        
+        // 从本地存储加载数据
+        function loadData() {
+            const savedData = localStorage.getItem('gradeData');
+            if (savedData) {
+                students = JSON.parse(savedData);
+            }
+            
+            // 从localStorage加载图片设置
+            const bannerImage = localStorage.getItem('bannerImage');
+            const logoImage = localStorage.getItem('logoImage');
+            const bgImage = localStorage.getItem('bgImage');
+            
+            if (bannerImage) {
+                document.getElementById('banner-image').value = bannerImage;
+                document.querySelector('header').style.background = `linear-gradient(120deg, #4a69bd 0%, #1e3799 100%), url(${bannerImage}) center/cover`;
+                document.getElementById('banner-preview').src = bannerImage;
+            }
+            
+            if (logoImage) {
+                document.getElementById('logo-image').value = logoImage;
+                document.querySelector('.logo').style.backgroundImage = `url(${logoImage})`;
+                document.getElementById('logo-preview').src = logoImage;
+            }
+            
+            if (bgImage) {
+                document.getElementById('bg-image').value = bgImage;
+                document.querySelector('.content').style.backgroundImage = `url(${bgImage})`;
+                document.getElementById('bg-preview').src = bgImage;
+            }
+            
+            // 填充学生下拉框
+            populateStudentSelect();
+        }
+        
+        // 保存数据到本地存储
+        function saveData() {
+            localStorage.setItem('gradeData', JSON.stringify(students));
+        }
+        
+        // 填充学生下拉框
+        function populateStudentSelect() {
+            studentSelect.innerHTML = '<option value="">-- 选择学生 --</option>';
+            
+            students.forEach(student => {
+                const option = document.createElement('option');
+                option.value = student.id;
+                option.textContent = `${student.name} (${student.id})`;
+                studentSelect.appendChild(option);
+            });
+        }
+        
+        // 显示消息
+        function showMessage(message, isSuccess = true) {
+            messageDiv.textContent = message;
+            messageDiv.className = `message ${isSuccess ? 'success' : 'error'}`;
+            messageDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 3500);
+        }
+        
+        // 查询成绩
+        function queryGrades() {
+            const studentId = document.getElementById('student-id').value.trim();
+            const resultsDiv = document.getElementById('query-results');
+            const gradesTable = document.getElementById('grades-table');
+            const avgScoreSpan = document.getElementById('avg-score');
+            const maxScoreSpan = document.getElementById('max-score');
+            const minScoreSpan = document.getElementById('min-score');
+            
+            if (!studentId) {
+                showMessage('请输入学号/工号', false);
+                return;
+            }
+            
+            const student = students.find(s => s.id === studentId);
+            
+            if (!student) {
+                showMessage('未找到该学生的信息', false);
+                resultsDiv.style.display = 'none';
+                return;
+            }
+            
+            // 填充表格
+            const tbody = gradesTable.querySelector('tbody');
+            tbody.innerHTML = '';
+            
+            let totalScore = 0;
+            let maxScore = 0;
+            let minScore = 100;
+            
+            student.grades.forEach(grade => {
+                const row = document.createElement('tr');
+                
+                // 根据分数确定等级
+                let level;
+                let rating = '';
+                if (grade.score >= 90) {
+                    level = '优秀';
+                    rating = '⭐⭐⭐⭐⭐';
+                } else if (grade.score >= 80) {
+                    level = '良好';
+                    rating = '⭐⭐⭐⭐';
+                } else if (grade.score >= 70) {
+                    level = '中等';
+                    rating = '⭐⭐⭐';
+                } else if (grade.score >= 60) {
+                    level = '及格';
+                    rating = '⭐⭐';
+                } else {
+                    level = '不及格';
+                    rating = '⭐';
+                }
+                
+                row.innerHTML = `
+                    <td>${grade.subject}</td>
+                    <td>${grade.score}</td>
+                    <td>${level}</td>
+                    <td>${rating}</td>
+                `;
+                
+                tbody.appendChild(row);
+                
+                totalScore += grade.score;
+                if (grade.score > maxScore) maxScore = grade.score;
+                if (grade.score < minScore) minScore = grade.score;
+            });
+            
+            // 计算统计数据
+            const avgScore = (totalScore / student.grades.length).toFixed(1);
+            avgScoreSpan.textContent = avgScore;
+            maxScoreSpan.textContent = maxScore;
+            minScoreSpan.textContent = minScore;
+            
+            // 显示结果
+            resultsDiv.style.display = 'block';
+            showMessage(`成功加载${student.name}的成绩信息`);
+        }
+        
+        // 进入编辑模式
+        function enterEditMode() {
+            const password = passwordInput.value;
+            
+            if (password === ADMIN_PASSWORD) {
+                document.querySelector('.admin-panel').style.display = 'block';
+                document.getElementById('login-btn').textContent = '已登录';
+                document.getElementById('login-btn').disabled = true;
+                passwordInput.disabled = true;
+                showMessage('管理员身份验证成功！');
+            } else {
+                showMessage('密码错误！', false);
+            }
+        }
+        
+        // 显示选中的学生成绩
+        function displayStudentGrades() {
+            const studentId = studentSelect.value;
+            const table = document.getElementById('edit-grades-table');
+            const tbody = table.querySelector('tbody');
+            tbody.innerHTML = '';
+            
+            if (!studentId) return;
+            
+            const student = students.find(s => s.id === studentId);
+            
+            student.grades.forEach((grade, index) => {
+                const row = document.createElement('tr');
+                row.dataset.index = index;
+                
+                row.innerHTML = `
+                    <td><input type="text" value="${grade.subject}" class="subject-input" style="width:90%; border-radius:8px; padding:8px 12px;"></td>
+                    <td><input type="number" value="${grade.score}" min="0" max="100" class="score-input" style="width:80px; padding:8px 12px; border-radius:8px;"></td>
+                    <td class="actions">
+                        <button class="action-btn save-btn" style="padding:8px 15px;"><i class="bi bi-save"></i> 保存</button>
+                        <button class="action-btn btn-danger remove-btn" style="padding:8px 15px;"><i class="bi bi-trash"></i> 删除</button>
+                    </td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+        
+        // 添加新科目
+        function addSubject() {
+            const studentId = studentSelect.value;
+            const subject = document.getElementById('subject').value.trim();
+            const score = parseInt(document.getElementById('score').value);
+            
+            if (!studentId) {
+                showMessage('请先选择一个学生', false);
+                return;
+            }
+            
+            if (!subject) {
+                showMessage('请输入科目名称', false);
+                return;
+            }
+            
+            if (isNaN(score) || score < 0 || score > 100) {
+                showMessage('请输入0-100之间的有效分数', false);
+                return;
+            }
+            
+            const student = students.find(s => s.id === studentId);
+            student.grades.push({ subject, score });
+            
+            saveData();
+            displayStudentGrades();
+            
+            document.getElementById('subject').value = '';
+            document.getElementById('score').value = '';
+            
+            showMessage('已成功添加科目成绩');
+        }
+        
+        // 清除所有数据
+        function clearAllData() {
+            if (confirm('确定要重置为初始数据吗？')) {
+                students = [
+                    {
+                        id: 'S2023001',
+                        name: '张三',
+                        grades: [
+                            { subject: '高等数学', score: 92 },
+                            { subject: '大学英语', score: 85 },
+                            { subject: '程序设计', score: 88 }
+                        ]
+                    },
+                    {
+                        id: 'S2023002',
+                        name: '李四',
+                        grades: [
+                            { subject: '高等数学', score: 78 },
+                            { subject: '大学英语', score: 90 },
+                            { subject: '程序设计', score: 82 }
+                        ]
+                    },
+                    {
+                        id: 'S2023003',
+                        name: '王五',
+                        grades: [
+                            { subject: '高等数学', score: 86 },
+                            { subject: '大学英语', score: 75 },
+                            { subject: '程序设计', score: 91 }
+                        ]
+                    }
+                ];
+                saveData();
+                populateStudentSelect();
+                displayStudentGrades();
+                showMessage('已重置所有数据');
+            }
+        }
+        
+        // 更新图片
+        function updateImages() {
+            const bannerImage = document.getElementById('banner-image').value;
+            const logoImage = document.getElementById('logo-image').value;
+            const bgImage = document.getElementById('bg-image').value;
+            
+            try {
+                // 更新横幅
+                if (bannerImage) {
+                    document.querySelector('header').style.background = `linear-gradient(120deg, #4a69bd 0%, #1e3799 100%), url(${bannerImage}) center/cover`;
+                    document.getElementById('banner-preview').src = bannerImage;
+                    localStorage.setItem('bannerImage', bannerImage);
+                }
+                
+                // 更新Logo
+                if (logoImage) {
+                    document.querySelector('.logo').style.backgroundImage = `url(${logoImage})`;
+                    document.getElementById('logo-preview').src = logoImage;
+                    localStorage.setItem('logoImage', logoImage);
+                }
+                
+                // 更新背景
+                if (bgImage) {
+                    document.querySelector('.content').style.backgroundImage = `url(${bgImage})`;
+                    document.getElementById('bg-preview').src = bgImage;
+                    localStorage.setItem('bgImage', bgImage);
+                }
+                
+                showMessage('图片已更新！');
+            } catch (e) {
+                showMessage('图片更新失败：' + e.message, false);
+            }
+        }
+        
+        // 事件监听
+        function initEventListeners() {
+            // 标签切换
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    const tabName = tab.dataset.tab;
+                    panels.forEach(panel => {
+                        panel.classList.remove('active');
+                        if (panel.id === `${tabName}-panel`) {
+                            panel.classList.add('active');
+                        }
+                    });
+                    
+                    // 清空输入和结果
+                    document.getElementById('student-id').value = '';
+                    document.getElementById('query-results').style.display = 'none';
+                });
+            });
+            
+            // 查询按钮
+            document.getElementById('query-btn').addEventListener('click', queryGrades);
+            
+            // 登录按钮
+            document.getElementById('login-btn').addEventListener('click', enterEditMode);
+            
+            // 密码显示切换
+            passwordToggle.addEventListener('click', () => {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    passwordToggle.classList.remove('bi-eye');
+                    passwordToggle.classList.add('bi-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    passwordToggle.classList.remove('bi-eye-slash');
+                    passwordToggle.classList.add('bi-eye');
+                }
+            });
+            
+            // 学生选择变化
+            studentSelect.addEventListener('change', displayStudentGrades);
+            
+            // 添加科目按钮
+            document.getElementById('add-btn').addEventListener('click', addSubject);
+            
+            // 清除数据按钮
+            document.getElementById('clear-btn').addEventListener('click', clearAllData);
+            
+            // 更新图片按钮
+            document.getElementById('update-images').addEventListener('click', updateImages);
+            
+            // 成绩表格编辑
+            document.getElementById('edit-grades-table').addEventListener('click', function(e) {
+                const target = e.target;
+                const button = target.closest('button');
+                if (!button) return;
+                
+                if (button.classList.contains('save-btn')) {
+                    const row = button.closest('tr');
+                    const index = row.dataset.index;
+                    const studentId = studentSelect.value;
+                    
+                    const subjectInput = row.querySelector('.subject-input');
+                    const scoreInput = row.querySelector('.score-input');
+                    
+                    const subject = subjectInput.value.trim();
+                    const score = parseInt(scoreInput.value);
+                    
+                    if (!subject) {
+                        showMessage('科目不能为空', false);
+                        return;
+                    }
+                    
+                    if (isNaN(score) || score < 0 || score > 100) {
+                        showMessage('请输入0-100之间的有效分数', false);
+                        return;
+                    }
+                    
+                    const student = students.find(s => s.id === studentId);
+                    student.grades[index] = { subject, score };
+                    
+                    saveData();
+                    showMessage('保存成功！');
+                }
+                
+                if (button.classList.contains('remove-btn')) {
+                    const row = button.closest('tr');
+                    const index = row.dataset.index;
+                    const studentId = studentSelect.value;
+                    
+                    const student = students.find(s => s.id === studentId);
+                    
+                    if (confirm(`确定要删除这门科目成绩吗？`)) {
+                        student.grades.splice(index, 1);
+                        saveData();
+                        displayStudentGrades();
+                        showMessage('已成功删除科目成绩');
+                    }
+                }
+            });
+            
+            // 按Enter键操作
+            document.getElementById('student-id').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') queryGrades();
+            });
+            
+            document.getElementById('admin-password').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') enterEditMode();
+            });
+            
+            document.getElementById('score').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') addSubject();
+            });
+        }
+        
+        // 初始化
+        window.addEventListener('DOMContentLoaded', () => {
+            loadData();
+            initEventListeners();
+        });
+    </script>
+</body>
+</html>
