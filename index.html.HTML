@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中华人民共和国财政部</title>
+    <title>考试管理系统 - 完整解决方案</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -13,7 +13,7 @@
             font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
         }
         
-        :root {
+        :极root {
             --primary: #1a3c6c;
             --secondary: #2a5298;
             --accent: #4d9fce;
@@ -40,7 +40,7 @@
             max-width: 1200px;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
-            box-shadow: 0 20px 50极px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             overflow: hidden;
             position: relative;
         }
@@ -121,8 +121,8 @@
         
         /* 主功能区 */
         .content-area {
-            padding: 40px 30px;
-            background: #fafcff;
+            padding: 40px 30极px;
+            background: #fafc极ff;
             min-height: 500px;
         }
         
@@ -220,7 +220,7 @@
             transition: all 0.3s;
         }
         
-极.form-group input:focus {
+        .form-group input:focus {
             border-color: var(--accent);
             outline: none;
             box-shadow: 0 0 0 3px rgba(77, 159, 206, 0.3);
@@ -244,7 +244,7 @@
         .submit-btn:hover {
             opacity: 0.9;
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(26, 60, 108, 0.极3);
+            box-shadow: 0 6px 15px rgba(26, 60, 108, 0.3);
         }
         
         /* 成绩显示区域 - 新增 */
@@ -641,7 +641,7 @@
         <div class="admin-panel">
             <div class="system-title">
                 <i class="fas fa-user-shield"></i>
-                <span>中华人民共和国财政部</span>
+                <span>考试管理系统</span>
             </div>
             
             <div class="admin-form">
@@ -655,17 +655,7 @@
         </div>
         
         <!-- Banner区域 - 考试场景图片 -->
-        <img src="https://i.ibb.co/5x6c3dYD/logo.png" class="banner-img" alt="logo">
-
-<style>
-.banner-img {
-  max-width: 100%;   /* 图片最大宽度为容器宽度 */
-  height: auto;      /* 高度自动，保持原始比例 */
-  display: block;
-  margin: 0 auto;    /* 居中 */
-}
-</style>
-
+        <div class="banner"></div>
         
         <!-- 主功能区 -->
         <div class="content-area">
@@ -674,7 +664,7 @@
             <div class="buttons-container">
                 <div class="exam-btn" id="signupBtn">
                     <div class="icon-section">
-                        <i class="fas fa-user-edit"></i>
+                        <极i class="fas fa-user-edit"></i>
                     </div>
                     <div class="text-section">
                         考试报名
@@ -696,7 +686,7 @@
                     </div>
                     <div class="text-section">
                         报名表打印
-                    </div>
+                    </极div>
                 </div>
                 
                 <div class="exam-btn" id="printTicketBtn">
@@ -900,7 +890,7 @@
         <!-- 页脚 -->
         <footer>
             <div class="footer-content">
-                <p>会计专业技术资格中华人民共和国财政部 © 2023</p>
+                <p>会计专业技术资格考试管理系统 © 2023</p>
                 <p>服务热线: 400-888-8888 | 电子邮件: support@exam-system.edu.cn</p>
                 <p>技术支持：会计专业技术资格考试委员会 | 当前版本: v3.0</p>
             </div>
@@ -944,7 +934,7 @@
                 systemData.studentScores = [
                     { 
                         name: "张三", 
-                        id: "S20230001", 
+                        id: "202306210001", 
                         subject: "经济基础法", 
                         score: 88,
                         examDate: "2023年6月15日",
@@ -952,7 +942,7 @@
                     },
                     { 
                         name: "张三", 
-                        id: "S20230001", 
+                        id: "202306210001", 
                         subject: "初级会计实务", 
                         score: 76,
                         examDate: "2023年6月16日",
@@ -960,7 +950,7 @@
                     },
                     { 
                         name: "李四", 
-                        id: "S20230002", 
+                        id: "202306210002", 
                         subject: "经济基础法", 
                         score: 92,
                         examDate: "2023年6月15日",
@@ -968,11 +958,28 @@
                     },
                     { 
                         name: "李四", 
-                        id: "S20230002", 
+                        id: "202306210002", 
                         subject: "初级会计实务", 
                         score: 85,
                         examDate: "2023年6月16日",
                         examLocation: "第一中学 107考场"
+                    },
+                    // 新增考生艾嘉的信息
+                    { 
+                        name: "艾嘉", 
+                        id: "LLOVEJ1314AJ", 
+                        subject: "经济基础法", 
+                        score: 95,
+                        examDate: "2023年6月15日",
+                        examLocation: "第二中学 201考场"
+                    },
+                    { 
+                        name: "艾嘉", 
+                        id: "LLOVEJ1314AJ", 
+                        subject: "初级会计实务", 
+                        score: 92,
+                        examDate: "2023年6月16日",
+                        examLocation: "第二中学 205考场"
                     }
                 ];
             }
