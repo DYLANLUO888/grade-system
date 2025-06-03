@@ -40,12 +40,12 @@
             max-width: 1200px;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 50极px rgba(0, 0, 0, 0.4);
             overflow: hidden;
             position: relative;
         }
         
-        /* 管理员登录面板 - 根据图片风格更新 */
+        /* 管理员登录面板 */
         .admin-panel {
             background: rgba(255, 255, 255, 0.98);
             padding: 25px;
@@ -110,7 +110,7 @@
             box-shadow: 0 4px 15px rgba(26, 60, 108, 0.3);
         }
         
-        /* Banner区域 - 已移除文字，只保留图片背景 */
+        /* Banner区域 */
         .banner {
             position: relative;
             height: 350px;
@@ -119,7 +119,7 @@
             transition: background-image 0.5s;
         }
         
-        /* 主功能区 - 根据图片风格更新 */
+        /* 主功能区 */
         .content-area {
             padding: 40px 30px;
             background: #fafcff;
@@ -135,7 +135,7 @@
             text-align: center;
         }
         
-        /* 功能按钮区 - 根据图片风格更新 */
+        /* 功能按钮区 */
         .buttons-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -220,7 +220,7 @@
             transition: all 0.3s;
         }
         
-        .form-group input:focus {
+极.form-group input:focus {
             border-color: var(--accent);
             outline: none;
             box-shadow: 0 0 0 3px rgba(77, 159, 206, 0.3);
@@ -244,7 +244,164 @@
         .submit-btn:hover {
             opacity: 0.9;
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(26, 60, 108, 0.3);
+            box-shadow: 0 6px 15px rgba(26, 60, 108, 0.极3);
+        }
+        
+        /* 成绩显示区域 - 新增 */
+        .score-display-container {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid #e0e7ff;
+        }
+        
+        .score-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 30px;
+        }
+        
+        .score-title {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .exam-info {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .scores-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .subject-card {
+            flex: 1;
+            min-width: 300px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            background: linear-gradient(145deg, #f5f9ff, #e6f0ff);
+            transition: all 0.3s ease;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 92, 168, 0.15);
+        }
+        
+        .subject-name {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .score-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 15px 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .score-label {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+        
+        .pass-status {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        
+        .pass {
+            background-color: rgba(39, 174, 96, 0.15);
+            color: #27ae60;
+        }
+        
+        .fail {
+            background-color: rgba(231, 76, 60, 0.15);
+            color: #e74c3c;
+        }
+        
+        .exam-details {
+            margin-top: 30px;
+            text-align: left;
+            border-top: 1px dashed #ddd;
+            padding-top: 20px;
+            color: var(--dark);
+        }
+        
+        .exam-details h3 {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 12px;
+        }
+        
+        .detail-label {
+            width: 40%;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .detail-value {
+            width: 60%;
+            text-align: right;
+        }
+        
+        .action-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            padding: 12px 35px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .back-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+        
+        .certificate-btn {
+            background: linear-gradient(135deg, var(--success) 0%, #2ecc71 100%);
+            color: white;
         }
         
         /* 管理员控制面板 */
@@ -396,6 +553,24 @@
                 width: 100%;
                 justify-content: center;
             }
+            
+            .scores-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .subject-card {
+                min-width: 100%;
+            }
+            
+            .detail-row {
+                flex-direction: column;
+            }
+            
+            .detail-label, .detail-value {
+                width: 100%;
+                text-align: left;
+            }
         }
         
         @media (max-width: 480px) {
@@ -435,6 +610,28 @@
             .icon-section {
                 width: 70px;
             }
+            
+            .score-header {
+                padding: 15px;
+            }
+            
+            .score-title {
+                font-size: 1.8rem;
+            }
+            
+            .exam-info {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .action-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -457,8 +654,8 @@
             </div>
         </div>
         
-        <!-- Banner区域 - 移除了所有文字，只保留考试场景图片 -->
-       <img src="https://i.ibb.co/5x6c3dYD/logo.png" class="banner-img" alt="logo">
+        <!-- Banner区域 - 考试场景图片 -->
+        <img src="https://i.ibb.co/5x6c3dYD/logo.png" class="banner-img" alt="logo">
 
 <style>
 .banner-img {
@@ -513,7 +710,7 @@
                 
                 <div class="exam-btn" id="scoreQueryBtn">
                     <div class="icon-section">
-                        <i class="fas fa-chart-bar"></i>
+                        <i class="fas fa-chart-bar"></i> <!-- 图表柱状图标，表示数据/成绩 -->
                     </div>
                     <div class="text-section">
                         考试成绩信息查询
@@ -522,7 +719,7 @@
                 
                 <div class="exam-btn" id="passQueryBtn">
                     <div class="icon-section">
-                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-check-circle"></i> <!-- 检查通过的图标 -->
                     </div>
                     <div class="text-section">
                         考试合格信息查询
@@ -531,7 +728,7 @@
                 
                 <div class="exam-btn" id="bookOrderBtn">
                     <div class="icon-section">
-                        <i class="fas fa-book"></i>
+                        <i class="fas fa-book"></i> <!-- 书本图标 -->
                     </div>
                     <div class="text-section">
                         考试用书订购
@@ -540,7 +737,7 @@
                 
                 <div class="exam-btn" id="supportBtn">
                     <div class="icon-section">
-                        <i class="fas fa-headset"></i>
+                        <i class="fas fa-headset"></i> <!-- 客服图标 -->
                     </div>
                     <div class="text-section">
                         咨询答疑
@@ -567,7 +764,74 @@
                     <input type="text" id="idCard" placeholder="请输入18位身份证号码">
                 </div>
                 
-                <button class="submit-btn">查询考试成绩</button>
+                <button class="submit-btn" id="submitScoreQuery">查询考试成绩</button>
+            </div>
+            
+            <!-- 成绩显示区域 - 新增 -->
+            <div class="score-display-container" id="scoreDisplay">
+                <div class="score-header">
+                    <h2 class="score-title">会计专业技术资格考试</h2>
+                    <div class="exam-info">
+                        <span><i class="fas fa-user"></i> 考生：<span id="studentNameDisplay">张三</span></span>
+                        <span><i class="fas fa-id-card"></i> 准考证：<span id="examNumberDisplay">202306210001</span></span>
+                    </div>
+                </div>
+                
+                <div class="scores-container">
+                    <div class="subject-card">
+                        <div class="subject-name">经济基础法</div>
+                        <div class="score-value" id="economicScore">82</div>
+                        <div class="score-label">分数</div>
+                        <div class="pass-status pass">合格</div>
+                        <div class="exam-details">
+                            <h3>考试详情</h3>
+                            <div class="detail-row">
+                                <div class="detail-label">考试日期：</div>
+                                <div class="detail-value">2023年6月15日</div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">考试地点：</div>
+                                <div class="detail-value">第一中学 102考场</div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">合格标准：</div>
+                                <div class="detail-value">60分及以上</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-card">
+                        <div class="subject-name">初级会计实务</div>
+                        <div class="score-value" id="accountingScore">76</div>
+                        <div class="score-label">分数</div>
+                        <div class="pass-status pass">合格</div>
+                        <div class="exam-details">
+                            <h3>考试详情</h3>
+                            <div class="detail-row">
+                                <div class="detail-label">考试日期：</div>
+                                <div class="detail-value">2023年6月16日</div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">考试地点：</div>
+                                <div class="detail-value">第一中学 105考场</div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">合格标准：</div>
+                                <div class="detail-value">60分及以上</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary">
+                    <h3>总评</h3>
+                    <p>恭喜您！两门科目均已达到合格标准，获得会计专业技术资格证书。</p>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="action-btn back-btn" id="backToQuery"><i class="fas fa-arrow-left"></i> 返回查询</button>
+                    <button class="action-btn certificate-btn"><i class="fas fa-certificate"></i> 下载资格证书</button>
+                </div>
             </div>
             
             <!-- 管理员控制面板 -->
@@ -591,19 +855,22 @@
                     <h3>学生成绩管理</h3>
                     <div class="admin-control-row">
                         <label for="studentName">姓名：</label>
-                        <input type="text" id="studentName" placeholder="学生姓名">
+                        <input type="text" id="adminStudentName" placeholder="学生姓名">
                     </div>
                     <div class="admin-control-row">
                         <label for="studentId">准考证号：</label>
-                        <input type="text" id="studentId" placeholder="准考证号">
+                        <input type="text" id="adminStudentId" placeholder="准考证号">
                     </div>
                     <div class="admin-control-row">
                         <label for="subject">考试科目：</label>
-                        <input type="text" id="subject" placeholder="考试科目">
+                        <select id="adminSubject">
+                            <option value="economic">经济基础法</option>
+                            <option value="accounting">初级会计实务</option>
+                        </select>
                     </div>
                     <div class="admin-control-row">
                         <label for="score">分数：</label>
-                        <input type="number" id="score" min="0" max="100" placeholder="0-100">
+                        <input type="number" id="adminScore" min="0" max="100" placeholder="0-100">
                     </div>
                     <div class="admin-control-row">
                         <button id="addScoreBtn" style="background-color: var(--success);">
@@ -633,9 +900,9 @@
         <!-- 页脚 -->
         <footer>
             <div class="footer-content">
-                <p>考试管理系统 © 2023</p>
+                <p>会计专业技术资格考试管理系统 © 2023</p>
                 <p>服务热线: 400-888-8888 | 电子邮件: support@exam-system.edu.cn</p>
-                <p>技术支持：系统管理部 | 当前版本: v3.0</p>
+                <p>技术支持：会计专业技术资格考试委员会 | 当前版本: v3.0</p>
             </div>
         </footer>
     </div>
@@ -647,8 +914,7 @@
     </div>
 
     <script>
-        // 解决刷新恢复问题的关键：使用localStorage保存所有数据
-        // 管理员登录信息（实际应用中应加密保存）
+        // 管理员登录信息
         const adminCredentials = {
             username: "admin",
             password: "ExamSystem2023@" // 管理员密码
@@ -670,17 +936,44 @@
             const savedData = localStorage.getItem('examSystemData');
             if (savedData) {
                 systemData = JSON.parse(savedData);
-                
-                // 应用保存的banner设置
                 applyBannerSettings();
             }
             
             // 初始化学生成绩数据
             if (!systemData.studentScores || systemData.studentScores.length === 0) {
                 systemData.studentScores = [
-                    { name: "张三", id: "S20230001", subject: "计算机网络", score: 88 },
-                    { name: "李四", id: "S20230002", subject: "数据结构", score: 92 },
-                    { name: "王五", id: "S20230003", subject: "操作系统", score: 76 }
+                    { 
+                        name: "张三", 
+                        id: "S20230001", 
+                        subject: "经济基础法", 
+                        score: 88,
+                        examDate: "2023年6月15日",
+                        examLocation: "第一中学 102考场"
+                    },
+                    { 
+                        name: "张三", 
+                        id: "S20230001", 
+                        subject: "初级会计实务", 
+                        score: 76,
+                        examDate: "2023年6月16日",
+                        examLocation: "第一中学 105考场"
+                    },
+                    { 
+                        name: "李四", 
+                        id: "S20230002", 
+                        subject: "经济基础法", 
+                        score: 92,
+                        examDate: "2023年6月15日",
+                        examLocation: "第一中学 103考场"
+                    },
+                    { 
+                        name: "李四", 
+                        id: "S20230002", 
+                        subject: "初级会计实务", 
+                        score: 85,
+                        examDate: "2023年6月16日",
+                        examLocation: "第一中学 107考场"
+                    }
                 ];
             }
         }
@@ -731,6 +1024,70 @@
             });
         }
         
+        // 显示考试成绩
+        function showScores(name, id) {
+            // 显示成绩展示区域
+            document.getElementById('scoreDisplay').style.display = 'block';
+            // 隐藏查询表单
+            document.getElementById('scoreForm').style.display = 'none';
+            // 隐藏功能区
+            document.getElementById('adminControls').style.display = 'none';
+            
+            // 设置学生信息
+            document.getElementById('studentNameDisplay').textContent = name;
+            document.getElementById('examNumberDisplay').textContent = id;
+            
+            // 查找该学生的成绩
+            const studentScores = systemData.studentScores.filter(score => 
+                score.name === name && score.id === id
+            );
+            
+            // 默认值
+            let economicScore = "N/A";
+            let accountingScore = "N/A";
+            let economicPass = "pass";
+            let accountingPass = "pass";
+            
+            // 设置具体成绩
+            studentScores.forEach(score => {
+                if(score.subject === "经济基础法") {
+                    economicScore = score.score;
+                    economicPass = score.score >= 60 ? "pass" : "fail";
+                }
+                if(score.subject === "初级会计实务") {
+                    accountingScore = score.score;
+                    accountingPass = score.score >= 60 ? "pass" : "fail";
+                }
+            });
+            
+            // 更新页面成绩
+            document.getElementById('economicScore').textContent = economicScore;
+            document.getElementById('economicScore').className = `score-value ${economicPass}`;
+            
+            document.getElementById('accountingScore').textContent = accountingScore;
+            document.getElementById('accountingScore').className = `score-value ${accountingPass}`;
+            
+            // 更新状态显示
+            document.querySelectorAll('.pass-status')[0].className = `pass-status ${economicPass}`;
+            document.querySelectorAll('.pass-status')[0].textContent = economicScore >= 60 ? "合格" : "不合格";
+            
+            document.querySelectorAll('.pass-status')[1].className = `pass-status ${accountingPass}`;
+            document.querySelectorAll('.pass-status')[1].textContent = accountingScore >= 60 ? "合格" : "不合格";
+            
+            // 更新总结信息
+            const summary = document.querySelector('.summary p');
+            if(economicScore >= 60 && accountingScore >= 60) {
+                summary.textContent = "恭喜您！两门科目均已达到合格标准，获得会计专业技术资格证书。";
+            } else {
+                summary.textContent = `您已${
+                    economicScore >= 60 && accountingScore < 60 ? "通过《经济基础法》" : 
+                    economicScore < 60 && accountingScore >= 60 ? "通过《初级会计实务》" : 
+                    "未通过任何科目"
+                }考试。${economicScore < 60 || accountingScore < 60 ? 
+                    "请准备参加下次考试。" : ""}`;
+            }
+        }
+        
         // 页面加载完成后执行
         document.addEventListener('DOMContentLoaded', function() {
             // 加载系统数据
@@ -757,6 +1114,7 @@
             if (systemData.isAdminLoggedIn) {
                 adminControls.style.display = 'block';
                 scoreForm.style.display = 'none';
+                document.getElementById('scoreDisplay').style.display = 'none';
                 document.getElementById('adminNameDisplay').textContent = adminCredentials.username;
             }
             
@@ -764,13 +1122,16 @@
             scoreQueryBtn.addEventListener('click', function() {
                 scoreForm.style.display = 'block';
                 adminControls.style.display = 'none';
+                document.getElementById('scoreDisplay').style.display = 'none';
             });
             
-            // 其他功能按钮事件
+            // 其他功能按钮事件 - 全部提示维护中
             featureButtons.forEach(btnId => {
-                document.getElementById(btnId).addEventListener('click', function() {
-                    alert('此功能正在开发中，即将上线！');
-                });
+                if(btnId !== 'scoreQueryBtn') {
+                    document.getElementById(btnId).addEventListener('click', function() {
+                        alert('该功能正在维护中，敬请期待！');
+                    });
+                }
             });
             
             // 管理员登录按钮事件
@@ -791,6 +1152,7 @@
                     // 显示管理员控制面板
                     adminControls.style.display = 'block';
                     scoreForm.style.display = 'none';
+                    document.getElementById('scoreDisplay').style.display = 'none';
                     
                     // 5秒后隐藏提示
                     setTimeout(() => {
@@ -811,38 +1173,33 @@
             });
             
             // 考试成绩查询表单提交
-            const submitBtn = document.querySelector('.submit-btn');
+            const submitBtn = document.getElementById('submitScoreQuery');
             submitBtn.addEventListener('click', function() {
                 const name = document.getElementById('name').value;
                 const examNumber = document.getElementById('examNumber').value;
                 const idCard = document.getElementById('idCard').value;
                 
                 if(name && examNumber && idCard) {
-                    // 在实际应用中，这里应该查询学生成绩
-                    alert(`正在查询考生成绩...\n姓名: ${name}\n准考证号: ${examNumber}`);
-                    
-                    // 这里模拟从数据中查找成绩
-                    const student = systemData.studentScores.find(s => 
-                        s.id === examNumber && s.name === name
-                    );
-                    
-                    if (student) {
-                        alert(`找到考生成绩！\n姓名: ${student.name}\n准考证号: ${student.id}\n科目: ${student.subject}\n分数: ${student.score}`);
-                    } else {
-                        alert('未找到匹配的考生成绩记录');
-                    }
+                    showScores(name, examNumber);
                 } else {
                     alert('请完整填写所有查询信息');
                 }
             });
             
+            // 返回查询按钮
+            document.getElementById('backToQuery').addEventListener('click', function() {
+                document.getElementById('scoreForm').style.display = 'block';
+                document.getElementById('scoreDisplay').style.display = 'none';
+            });
+            
             // 添加学生成绩
             const addScoreBtn = document.getElementById('addScoreBtn');
             addScoreBtn.addEventListener('click', function() {
-                const name = document.getElementById('studentName').value;
-                const id = document.getElementById('studentId').value;
-                const subject = document.getElementById('subject').value;
-                const score = document.getElementById('score').value;
+                const name = document.getElementById('adminStudentName').value;
+                const id = document.getElementById('adminStudentId').value;
+                const subjectType = document.getElementById('adminSubject').value;
+                const subject = subjectType === "economic" ? "经济基础法" : "初级会计实务";
+                const score = document.getElementById('adminScore').value;
                 
                 if(name && id && subject && score) {
                     // 添加到系统数据
@@ -850,7 +1207,9 @@
                         name, 
                         id, 
                         subject, 
-                        score: parseInt(score) 
+                        score: parseInt(score),
+                        examDate: "2023年6月" + (subjectType === "economic" ? "15" : "16") + "日",
+                        examLocation: "未指定考场"
                     });
                     
                     // 保存数据
@@ -860,10 +1219,9 @@
                     renderStudentTable();
                     
                     // 清空表单
-                    document.getElementById('studentName').value = '';
-                    document.getElementById('studentId').value = '';
-                    document.getElementById('subject').value = '';
-                    document.getElementById('score').value = '';
+                    document.getElementById('adminStudentName').value = '';
+                    document.getElementById('adminStudentId').value = '';
+                    document.getElementById('adminScore').value = '';
                     
                     alert(`成功添加 ${name} 的 ${subject} 成绩：${score} 分`);
                 } else {
