@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>考试管理系统 - 完整版</title>
+    <title>考试管理系统 - 完整解决方案</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -45,7 +45,7 @@
             position: relative;
         }
         
-        /* 管理员登录面板 */
+        /* 管理员登录面板 - 根据图片风格更新 */
         .admin-panel {
             background: rgba(255, 255, 255, 0.98);
             padding: 25px;
@@ -55,6 +55,7 @@
             flex-wrap: wrap;
             gap: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid var(--accent);
         }
         
         .system-title {
@@ -109,7 +110,7 @@
             box-shadow: 0 4px 15px rgba(26, 60, 108, 0.3);
         }
         
-        /* Banner区域 */
+        /* Banner区域 - 根据图片风格更新 */
         .banner {
             position: relative;
             height: 350px;
@@ -128,6 +129,7 @@
             font-size: 3rem;
             margin-bottom: 15px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            color: white;
         }
         
         .banner p {
@@ -135,9 +137,10 @@
             max-width: 700px;
             margin: 0 auto;
             text-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+            color: white;
         }
         
-        /* 主功能区 */
+        /* 主功能区 - 根据图片风格更新 */
         .content-area {
             padding: 40px 30px;
             background: #fafcff;
@@ -153,17 +156,12 @@
             text-align: center;
         }
         
+        /* 功能按钮区 - 根据图片风格更新 */
         .buttons-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-        
-        .btn-row {
-            display: flex;
-            flex-direction: column;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
+            margin-top: 30px;
         }
         
         .exam-btn {
@@ -176,6 +174,7 @@
             background: white;
             position: relative;
             min-height: 80px;
+            border: 1px solid #e0e7ff;
         }
         
         .exam-btn:hover {
@@ -188,7 +187,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, var(--accent) 0%, #4d9fce 100%);
+            background: var(--accent);
             position: relative;
         }
         
@@ -200,8 +199,8 @@
         
         .text-section {
             flex: 1;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
+            background: white;
+            color: var(--primary);
             padding: 20px;
             display: flex;
             align-items: center;
@@ -355,58 +354,6 @@
             background-color: #e6f0ff;
         }
         
-        /* 图标管理 */
-        .icon-management {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .icon-item {
-            background: #f5f9ff;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.3s;
-        }
-        
-        .icon-item.selected {
-            border-color: var(--accent);
-            background: #e6f0ff;
-        }
-        
-        .icon-item i {
-            font-size: 36px;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-        
-        /* 功能未开放提示 */
-        .feature-alert {
-            display: none;
-            padding: 30px;
-            background: #fff9e6;
-            border-left: 5px solid var(--warning);
-            border-radius: 8px;
-            margin-top: 40px;
-            text-align: center;
-        }
-        
-        .feature-alert i {
-            font-size: 48px;
-            color: var(--warning);
-            margin-bottom: 20px;
-        }
-        
-        .feature-alert p {
-            font-size: 24px;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
         /* 登录状态提示 */
         .login-status {
             position: fixed;
@@ -449,7 +396,7 @@
         /* 响应式设计 */
         @media (max-width: 1024px) {
             .buttons-container {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
             
             .banner h1 {
@@ -537,8 +484,8 @@
         <!-- 管理员登录面板 -->
         <div class="admin-panel">
             <div class="system-title">
-                <i class="fas fa-graduation-cap"></i>
-                <span>中华人民共和国财政部</span>
+                <i class="fas fa-user-shield"></i>
+                <span>考试管理系统</span>
             </div>
             
             <div class="admin-form">
@@ -553,99 +500,84 @@
         
         <!-- Banner区域 -->
         <div class="banner">
-            <h1>全国计算机等级考试系统</h1>
-            <p>考试报名 · 准考证打印 · 成绩查询 · 数据分析</p>
+            <h1>考试服务平台</h1>
+            <p>专业、高效、安全的考试服务解决方案</p>
         </div>
         
         <!-- 主功能区 -->
         <div class="content-area">
-            <h2 class="section-title">考试服务平台</h2>
+            <h2 class="section-title">考试服务功能</h2>
             
             <div class="buttons-container">
-                <div class="btn-row">
-                    <div class="exam-btn" id="signupBtn">
-                        <div class="icon-section">
-                            <i class="fas fa-user-friends"></i>
-                        </div>
-                        <div class="text-section">
-                            考试报名
-                        </div>
+                <div class="exam-btn" id="signupBtn">
+                    <div class="icon-section">
+                        <i class="fas fa-user-edit"></i>
                     </div>
-                    
-                    <div class="exam-btn" id="signupStatusBtn">
-                        <div class="icon-section">
-                            <i class="fas fa-file-search"></i>
-                        </div>
-                        <div class="text-section">
-                            报名状态查询
-                        </div>
-                    </div>
-                    
-                    <div class="exam-btn" id="printFormBtn">
-                        <div class="icon-section">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <div class="text-section">
-                            报名表打印
-                        </div>
+                    <div class="text-section">
+                        考试报名
                     </div>
                 </div>
                 
-                <div class="btn-row">
-                    <div class="exam-btn" id="printTicketBtn">
-                        <div class="icon-section">
-                            <i class="fas fa-print"></i>
-                        </div>
-                        <div class="text-section">
-                            准考证打印
-                        </div>
+                <div class="exam-btn" id="signupStatusBtn">
+                    <div class="icon-section">
+                        <i class="fas fa-search"></i>
                     </div>
-                    
-                    <div class="exam-btn" id="scoreQueryBtn">
-                        <div class="icon-section">
-                            <i class="fas fa-file-contract"></i>
-                        </div>
-                        <div class="text-section">
-                            考试成绩信息查询
-                        </div>
-                    </div>
-                    
-                    <div class="exam-btn" id="passQueryBtn">
-                        <div class="icon-section">
-                            <i class="fas fa-file-check"></i>
-                        </div>
-                        <div class="text-section">
-                            考试合格信息查询
-                        </div>
+                    <div class="text-section">
+                        报名状态查询
                     </div>
                 </div>
                 
-                <div class="btn-row">
-                    <div class="exam-btn" id="bookOrderBtn">
-                        <div class="icon-section">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <div class="text-section">
-                            考试用书订购
-                        </div>
+                <div class="exam-btn" id="printFormBtn">
+                    <div class="icon-section">
+                        <i class="fas fa-file-alt"></i>
                     </div>
-                    
-                    <div class="exam-btn" id="supportBtn">
-                        <div class="icon-section">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <div class="text-section">
-                            咨询答疑
-                        </div>
+                    <div class="text-section">
+                        报名表打印
                     </div>
-                    
-                    <div class="exam-btn" id="statsBtn">
-                        <div class="icon-section">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="text-section">
-                            数据分析统计
-                        </div>
+                </div>
+                
+                <div class="exam-btn" id="printTicketBtn">
+                    <div class="icon-section">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <div class="text-section">
+                        准考证打印
+                    </div>
+                </div>
+                
+                <div class="exam-btn" id="scoreQueryBtn">
+                    <div class="icon-section">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="text-section">
+                        考试成绩信息查询
+                    </div>
+                </div>
+                
+                <div class="exam-btn" id="passQueryBtn">
+                    <div class="icon-section">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="text-section">
+                        考试合格信息查询
+                    </div>
+                </div>
+                
+                <div class="exam-btn" id="bookOrderBtn">
+                    <div class="icon-section">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="text-section">
+                        考试用书订购
+                    </div>
+                </div>
+                
+                <div class="exam-btn" id="supportBtn">
+                    <div class="icon-section">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="text-section">
+                        咨询答疑
                     </div>
                 </div>
             </div>
@@ -683,59 +615,9 @@
                         <span id="adminNameDisplay">未登录</span>
                     </div>
                     <div class="admin-control-row">
-                        <label>权限级别：</label>
-                        <span>超级管理员</span>
-                    </div>
-                </div>
-                
-                <div class="admin-section">
-                    <h3>自定义 Banner</h3>
-                    <div class="admin-control-row">
-                        <label for="bannerImage">图片 URL：</label>
-                        <input type="text" id="bannerImage" placeholder="输入新Banner图片URL">
-                    </div>
-                    <div class="admin-control-row">
-                        <label for="bannerTitle">主标题：</label>
-                        <input type="text" id="bannerTitle" placeholder="输入新主标题">
-                    </div>
-                    <div class="admin-control-row">
-                        <label for="bannerSubtitle">副标题：</label>
-                        <input type="text" id="bannerSubtitle" placeholder="输入新副标题">
-                    </div>
-                    <div class="admin-control-row">
-                        <button id="updateBannerBtn" style="background-color: var(--accent);">
-                            <i class="fas fa-sync-alt"></i> 更新Banner
+                        <button id="logoutBtn" style="background-color: var(--warning);">
+                            <i class="fas fa-sign-out-alt"></i> 退出登录
                         </button>
-                    </div>
-                </div>
-                
-                <div class="admin-section">
-                    <h3>图标管理</h3>
-                    <div class="icon-management">
-                        <div class="icon-item" data-btn="signupBtn" data-icon="user-friends">
-                            <i class="fas fa-user-friends"></i>
-                            <div>考试报名</div>
-                        </div>
-                        <div class="icon-item" data-btn="signupStatusBtn" data-icon="file-search">
-                            <i class="fas fa-file-search"></i>
-                            <div>报名状态查询</div>
-                        </div>
-                        <div class="icon-item" data-btn="printFormBtn" data-icon="file-alt">
-                            <i class="fas fa-file-alt"></i>
-                            <div>报名表打印</div>
-                        </div>
-                        <div class="icon-item" data-btn="printTicketBtn" data-icon="print">
-                            <i class="fas fa-print"></i>
-                            <div>准考证打印</div>
-                        </div>
-                        <div class="icon-item" data-btn="scoreQueryBtn" data-icon="file-contract">
-                            <i class="fas fa-file-contract"></i>
-                            <div>成绩查询</div>
-                        </div>
-                        <div class="icon-item" data-btn="passQueryBtn" data-icon="file-check">
-                            <i class="fas fa-file-check"></i>
-                            <div>合格信息查询</div>
-                        </div>
                     </div>
                 </div>
                 
@@ -746,11 +628,11 @@
                         <input type="text" id="studentName" placeholder="学生姓名">
                     </div>
                     <div class="admin-control-row">
-                        <label for="studentId">学号：</label>
-                        <input type="text" id="studentId" placeholder="学生学号">
+                        <label for="studentId">准考证号：</label>
+                        <input type="text" id="studentId" placeholder="准考证号">
                     </div>
                     <div class="admin-control-row">
-                        <label for="subject">科目：</label>
+                        <label for="subject">考试科目：</label>
                         <input type="text" id="subject" placeholder="考试科目">
                     </div>
                     <div class="admin-control-row">
@@ -763,11 +645,12 @@
                         </button>
                     </div>
                     
+                    <h3>成绩数据表</h3>
                     <table class="student-table">
                         <thead>
                             <tr>
                                 <th>姓名</th>
-                                <th>学号</th>
+                                <th>准考证号</th>
                                 <th>科目</th>
                                 <th>分数</th>
                                 <th>操作</th>
@@ -779,20 +662,14 @@
                     </table>
                 </div>
             </div>
-            
-            <!-- 功能未开放提示 -->
-            <div class="feature-alert" id="featureAlert">
-                <i class="fas fa-tools"></i>
-                <p>此功能正在建设中，即将上线<br>请关注系统通知</p>
-            </div>
         </div>
         
         <!-- 页脚 -->
         <footer>
             <div class="footer-content">
-                <p>中华人民共和国财政部 © 2023</p>
+                <p>考试管理系统 © 2023</p>
                 <p>服务热线: 400-888-8888 | 电子邮件: support@exam-system.edu.cn</p>
-                <p>技术支持：技术部 | 当前版本: v2.1.3</p>
+                <p>技术支持：系统管理部 | 当前版本: v3.0</p>
             </div>
         </footer>
     </div>
@@ -804,22 +681,55 @@
     </div>
 
     <script>
-        // 管理员登录信息
+        // 解决刷新恢复问题的关键：使用localStorage保存所有数据
+        // 管理员登录信息（实际应用中应加密保存）
         const adminCredentials = {
             username: "admin",
-            password: "exam2023!" // 系统管理员密码
+            password: "ExamSystem2023@" // 管理员密码
         };
         
-        // 学生成绩数据
-        let studentScores = JSON.parse(localStorage.getItem('studentScores')) || [
-            { name: "张三", id: "S20230001", subject: "计算机网络", score: 88 },
-            { name: "李四", id: "S20230002", subject: "数据结构", score: 92 },
-            { name: "王五", id: "S20230003", subject: "操作系统", score: 76 }
-        ];
+        // 初始化数据存储对象
+        let systemData = {
+            bannerSettings: {
+                imageUrl: "https://images.unsplash.com/photo-1498243691581-b4c52b5dc3d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+                title: "考试服务平台",
+                subtitle: "专业、高效、安全的考试服务解决方案"
+            },
+            studentScores: [],
+            isAdminLoggedIn: false
+        };
         
-        // 保存学生成绩到本地存储
-        function saveStudentScores() {
-            localStorage.setItem('studentScores', JSON.stringify(studentScores));
+        // 从本地存储加载数据
+        function loadSystemData() {
+            const savedData = localStorage.getItem('examSystemData');
+            if (savedData) {
+                systemData = JSON.parse(savedData);
+                
+                // 应用保存的banner设置
+                applyBannerSettings();
+            }
+            
+            // 初始化学生成绩数据
+            if (!systemData.studentScores || systemData.studentScores.length === 0) {
+                systemData.studentScores = [
+                    { name: "张三", id: "S20230001", subject: "计算机网络", score: 88 },
+                    { name: "李四", id: "S20230002", subject: "数据结构", score: 92 },
+                    { name: "王五", id: "S20230003", subject: "操作系统", score: 76 }
+                ];
+            }
+        }
+        
+        // 保存系统数据到本地存储
+        function saveSystemData() {
+            localStorage.setItem('examSystemData', JSON.stringify(systemData));
+        }
+        
+        // 应用banner设置
+        function applyBannerSettings() {
+            const banner = document.querySelector('.banner');
+            banner.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('${systemData.bannerSettings.imageUrl}')`;
+            banner.querySelector('h1').textContent = systemData.bannerSettings.title;
+            banner.querySelector('p').textContent = systemData.bannerSettings.subtitle;
         }
         
         // 渲染学生成绩表格
@@ -827,7 +737,7 @@
             const tableBody = document.getElementById('studentTableBody');
             tableBody.innerHTML = '';
             
-            studentScores.forEach((student, index) => {
+            systemData.studentScores.forEach((student, index) => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${student.name}</td>
@@ -848,9 +758,9 @@
             document.querySelectorAll('.delete-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
-                    if (confirm(`确定要删除 ${studentScores[index].name} 的 ${studentScores[index].subject} 成绩吗？`)) {
-                        studentScores.splice(index, 1);
-                        saveStudentScores();
+                    if (confirm(`确定要删除 ${systemData.studentScores[index].name} 的 ${systemData.studentScores[index].subject} 成绩吗？`)) {
+                        systemData.studentScores.splice(index, 1);
+                        saveSystemData();
                         renderStudentTable();
                     }
                 });
@@ -859,6 +769,9 @@
         
         // 页面加载完成后执行
         document.addEventListener('DOMContentLoaded', function() {
+            // 加载系统数据
+            loadSystemData();
+            
             // 初始化学生表格
             renderStudentTable();
             
@@ -870,26 +783,29 @@
             const featureButtons = [
                 'signupBtn', 'signupStatusBtn', 'printFormBtn', 
                 'printTicketBtn', 'passQueryBtn', 'bookOrderBtn', 
-                'supportBtn', 'statsBtn'
+                'supportBtn'
             ];
             
-            const featureAlert = document.getElementById('featureAlert');
             const adminControls = document.getElementById('adminControls');
             const loginStatus = document.getElementById('loginStatus');
+            
+            // 显示管理员面板（如果之前已登录）
+            if (systemData.isAdminLoggedIn) {
+                adminControls.style.display = 'block';
+                scoreForm.style.display = 'none';
+                document.getElementById('adminNameDisplay').textContent = adminCredentials.username;
+            }
             
             // 考试成绩查询按钮事件
             scoreQueryBtn.addEventListener('click', function() {
                 scoreForm.style.display = 'block';
-                featureAlert.style.display = 'none';
                 adminControls.style.display = 'none';
             });
             
             // 其他功能按钮事件
             featureButtons.forEach(btnId => {
                 document.getElementById(btnId).addEventListener('click', function() {
-                    scoreForm.style.display = 'none';
-                    adminControls.style.display = 'none';
-                    featureAlert.style.display = 'block';
+                    alert('此功能正在开发中，即将上线！');
                 });
             });
             
@@ -904,34 +820,30 @@
                     loginStatus.classList.add('active');
                     document.getElementById('adminNameDisplay').textContent = username;
                     
+                    // 更新登录状态
+                    systemData.isAdminLoggedIn = true;
+                    saveSystemData();
+                    
                     // 显示管理员控制面板
                     adminControls.style.display = 'block';
                     scoreForm.style.display = 'none';
-                    featureAlert.style.display = 'none';
                     
                     // 5秒后隐藏提示
                     setTimeout(() => {
                         loginStatus.classList.remove('active');
                     }, 5000);
                 } else {
-                    alert('登录失败！请检查您的用户名和密码\n\n提示：密码是系统自动生成的');
+                    alert('登录失败！请检查您的用户名和密码');
                 }
             });
             
-            // Banner更新功能
-            const updateBannerBtn = document.getElementById('updateBannerBtn');
-            updateBannerBtn.addEventListener('click', function() {
-                const banner = document.querySelector('.banner');
-                const bannerImage = document.getElementById('bannerImage').value || 'https://images.unsplash.com/photo-1498243691581-b4c52b5dc3d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80';
-                const bannerTitle = document.getElementById('bannerTitle').value || '全国计算机等级考试系统';
-                const bannerSubtitle = document.getElementById('bannerSubtitle').value || '考试报名 · 准考证打印 · 成绩查询 · 数据分析';
-                
-                // 更新Banner
-                banner.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('${bannerImage}')`;
-                banner.querySelector('h1').textContent = bannerTitle;
-                banner.querySelector('p').textContent = bannerSubtitle;
-                
-                alert('Banner更新成功！');
+            // 退出登录按钮事件
+            const logoutBtn = document.getElementById('logoutBtn');
+            logoutBtn.addEventListener('click', function() {
+                systemData.isAdminLoggedIn = false;
+                saveSystemData();
+                adminControls.style.display = 'none';
+                alert('您已成功退出管理员账号！');
             });
             
             // 考试成绩查询表单提交
@@ -942,7 +854,19 @@
                 const idCard = document.getElementById('idCard').value;
                 
                 if(name && examNumber && idCard) {
-                    alert(`成绩查询请求已提交！\n姓名: ${name}\n准考证: ${examNumber}\n身份证: ${idCard}\n\n结果将显示在当前页面`);
+                    // 在实际应用中，这里应该查询学生成绩
+                    alert(`正在查询考生成绩...\n姓名: ${name}\n准考证号: ${examNumber}`);
+                    
+                    // 这里模拟从数据中查找成绩
+                    const student = systemData.studentScores.find(s => 
+                        s.id === examNumber && s.name === name
+                    );
+                    
+                    if (student) {
+                        alert(`找到考生成绩！\n姓名: ${student.name}\n准考证号: ${student.id}\n科目: ${student.subject}\n分数: ${student.score}`);
+                    } else {
+                        alert('未找到匹配的考生成绩记录');
+                    }
                 } else {
                     alert('请完整填写所有查询信息');
                 }
@@ -957,8 +881,18 @@
                 const score = document.getElementById('score').value;
                 
                 if(name && id && subject && score) {
-                    studentScores.push({ name, id, subject, score: parseInt(score) });
-                    saveStudentScores();
+                    // 添加到系统数据
+                    systemData.studentScores.push({ 
+                        name, 
+                        id, 
+                        subject, 
+                        score: parseInt(score) 
+                    });
+                    
+                    // 保存数据
+                    saveSystemData();
+                    
+                    // 更新表格
                     renderStudentTable();
                     
                     // 清空表单
@@ -971,28 +905,6 @@
                 } else {
                     alert('请填写完整的学生成绩信息');
                 }
-            });
-            
-            // 图标管理
-            document.querySelectorAll('.icon-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    // 清除其他选中的图标
-                    document.querySelectorAll('.icon-item').forEach(i => {
-                        i.classList.remove('selected');
-                    });
-                    
-                    // 选中当前图标
-                    this.classList.add('selected');
-                    
-                    const btnId = this.getAttribute('data-btn');
-                    const iconClass = this.querySelector('i').className;
-                    
-                    // 更新对应的按钮图标
-                    const iconSection = document.querySelector(`#${btnId} .icon-section i`);
-                    iconSection.className = iconClass;
-                    
-                    alert('按钮图标更新成功！');
-                });
             });
         });
     </script>
