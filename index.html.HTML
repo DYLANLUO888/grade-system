@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>考试管理系统 - 完整解决方案</title>
+    <title>专业考试管理系统</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -23,39 +23,40 @@
             --error: #e74c3c;
             --gray: #95a5a6;
             --dark: #2c3e50;
+            --background: #f0f7ff;
+            --card: #ffffff;
+            --border: #d0e3ff;
         }
         
         body {
-            background: linear-gradient(135deg, #1a3c6c 0%, #2a5298 100%);
-            color: white;
+            background-color: var(--background);
+            color: var(--dark);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 20px;
+            transition: background-color 0.5s;
         }
         
         .container {
             width: 100%;
             max-width: 1200px;
-            background: rgba(255, 255, 255, 0.95);
+            margin: 0 auto;
+            background: var(--card);
             border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 30px rgba(0, 0, 120, 0.1);
             overflow: hidden;
-            position: relative;
         }
         
-        /* 管理员登录面板 - 根据图片风格更新 */
-        .admin-panel {
+        /* 管理员工具栏 */
+        .admin-toolbar {
             background: rgba(255, 255, 255, 0.98);
-            padding: 25px;
+            padding: 15px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-bottom: 3px solid var(--accent);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-bottom: 2px solid var(--accent);
         }
         
         .system-title {
@@ -75,11 +76,11 @@
         }
         
         .admin-form input {
-            padding: 12px 18px;
-            border-radius: 8px;
+            padding: 10px 15px;
+            border-radius: 6px;
             border: 2px solid #ddd;
-            font-size: 16px;
-            min-width: 220px;
+            font-size: 15px;
+            min-width: 200px;
             transition: all 0.3s;
         }
         
@@ -93,74 +94,75 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 10px 25px;
+            border-radius: 6px;
+            font-size: 15px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         
         .admin-form button:hover {
             opacity: 0.9;
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(26, 60, 108, 0.3);
+            box-shadow: 0 4px 10px rgba(26, 60, 108, 0.3);
         }
         
-        /* Banner区域 - 根据图片风格更新 */
+        /* Banner区域 - 根据图片设计 */
         .banner {
             position: relative;
-            height: 350px;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), 
-                         url('https://images.unsplash.com/photo-1498243691581-b4c52b5dc3d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover;
+            height: 300px;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), 
+                         center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            transition: background-image 0.5s;
+            transition: all 0.5s;
         }
         
         .banner h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
             color: white;
+            letter-spacing: 1px;
         }
         
         .banner p {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             max-width: 700px;
             margin: 0 auto;
-            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
             color: white;
+            line-height: 1.4;
         }
         
-        /* 主功能区 - 根据图片风格更新 */
+        /* 主功能区 - 根据图片设计 */
         .content-area {
-            padding: 40px 30px;
-            background: #fafcff;
+            padding: 35px 25px 50px;
             min-height: 500px;
         }
         
         .section-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--primary);
             margin-bottom: 30px;
             padding-bottom: 15px;
             border-bottom: 3px solid var(--accent);
             text-align: center;
+            font-weight: 700;
         }
         
-        /* 功能按钮区 - 根据图片风格更新 */
         .buttons-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-top: 30px;
         }
         
@@ -168,27 +170,28 @@
             display: flex;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 60, 120, 0.08);
             transition: all 0.3s ease;
             cursor: pointer;
             background: white;
             position: relative;
-            min-height: 80px;
-            border: 1px solid #e0e7ff;
+            height: 90px;
+            border: 1px solid var(--border);
         }
         
         .exam-btn:hover {
             transform: translateY(-7px);
-            box-shadow: 0 12px 20px rgba(0, 92, 168, 0.25);
+            box-shadow: 0 12px 20px rgba(0, 92, 168, 0.15);
         }
         
         .icon-section {
-            width: 80px;
+            width: 85px;
             display: flex;
             justify-content: center;
             align-items: center;
             background: var(--accent);
             position: relative;
+            transition: all 0.3s;
         }
         
         .icon-section i {
@@ -212,17 +215,17 @@
         /* 考试成绩查询表单 */
         .exam-form-container {
             display: none;
-            margin: 50px auto 30px;
+            margin: 30px auto;
             background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
             max-width: 600px;
-            border: 1px solid #e0e7ff;
+            border: 1px solid var(--border);
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .form-group label {
@@ -234,38 +237,40 @@
         
         .form-group input {
             width: 100%;
-            padding: 14px;
-            border: 2px solid #ddd;
+            padding: 12px 16px;
+            border: 2px solid #e0e7ff;
             border-radius: 8px;
             font-size: 16px;
             transition: all 0.3s;
+            background: #f9fbfe;
         }
         
         .form-group input:focus {
             border-color: var(--accent);
+            background: white;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(77, 159, 206, 0.3);
+            box-shadow: 0 0 0 3px rgba(77, 159, 206, 0.2);
         }
         
         .submit-btn {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 14px 20px;
             border-radius: 8px;
-            font-size: 18px;
+            font-size: 17px;
             cursor: pointer;
             font-weight: 600;
             display: block;
             width: 100%;
-            margin-top: 10px;
+            margin-top: 15px;
             transition: all 0.3s;
         }
         
         .submit-btn:hover {
-            opacity: 0.9;
+            opacity: 0.92;
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(26, 60, 108, 0.3);
+            box-shadow: 0 6px 15px rgba(26, 60, 108, 0.25);
         }
         
         /* 管理员控制面板 */
@@ -274,9 +279,9 @@
             background: white;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            margin-top: 40px;
-            border: 1px solid #e0e7ff;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            margin-top: 30px;
+            border: 1px solid var(--border);
         }
         
         .admin-section {
@@ -287,7 +292,7 @@
             color: var(--primary);
             font-size: 1.5rem;
             margin-bottom: 20px;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             border-bottom: 2px solid var(--accent);
         }
         
@@ -295,12 +300,12 @@
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             align-items: center;
         }
         
         .admin-control-row label {
-            min-width: 150px;
+            min-width: 160px;
             color: var(--dark);
             font-weight: 500;
         }
@@ -309,8 +314,9 @@
             flex: 1;
             min-width: 250px;
             padding: 10px 15px;
-            border: 2px solid #ddd;
+            border: 2px solid #e0e7ff;
             border-radius: 8px;
+            background: #f9fbfe;
         }
         
         .admin-control-row button {
@@ -322,61 +328,122 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .admin-control-row button:hover {
-            background: #3b8ebc;
+            opacity: 0.9;
+            transform: translateY(-2px);
         }
         
-        /* 学生数据表格 */
-        .student-table {
-            width: 100%;
-            border-collapse: collapse;
+        /* 考试成绩展示页面 */
+        #scoreResultPage {
+            display: none;
+            padding: 40px;
+            background: white;
+            min-height: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
         
-        .student-table th, .student-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .student-table th {
-            background: var(--primary);
+        .score-card {
+            background: linear-gradient(135deg, #1a3c6c 0%, #2a5298 100%);
+            border-radius: 16px;
+            padding: 30px;
             color: white;
+            margin: 30px auto;
+            max-width: 700px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(26, 60, 108, 0.3);
+            position: relative;
+            overflow: hidden;
         }
         
-        .student-table tr:nth-child(even) {
-            background-color: #f2f7ff;
+        .score-card::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
+            transform: rotate(30deg);
+            z-index: 1;
         }
         
-        .student-table tr:hover {
-            background-color: #e6f0ff;
+        .student-id {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
         }
         
-        /* 登录状态提示 */
-        .login-status {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            padding: 15px 30px;
-            background: white;
-            border-radius: 50px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        .student-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        
+        .score-display {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #ffeb3b;
+            text-shadow: 0 2px 20px rgba(255, 235, 59, 0.4);
+        }
+        
+        .score-result {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            color: var(--primary);
-            z-index: 100;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.5s ease;
+            justify-content: space-between;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: left;
         }
         
-        .login-status.active {
-            transform: translateY(0);
-            opacity: 1;
+        .result-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+        
+        .result-value {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .score-chart {
+            max-width: 600px;
+            height: 300px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-btn {
+            background: linear-gradient(135deg, #4d9fce 0%, #2a5298 100%);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 30px auto 10px;
+            display: block;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(26, 60, 108, 0.3);
         }
         
         /* 页脚 */
@@ -385,7 +452,8 @@
             color: white;
             padding: 30px;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 30px;
+            border-top: 3px solid var(--accent);
         }
         
         .footer-content {
@@ -410,7 +478,7 @@
             }
             
             .banner {
-                height: 280px;
+                height: 260px;
             }
             
             .banner h1 {
@@ -422,21 +490,25 @@
             }
             
             .section-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             
             .admin-form {
                 width: 100%;
                 justify-content: center;
             }
+            
+            .exam-btn {
+                height: 85px;
+            }
         }
         
         @media (max-width: 480px) {
             body {
-                padding: 10px;
+                padding: 15px;
             }
             
-            .admin-panel {
+            .admin-toolbar {
                 padding: 15px;
                 flex-direction: column;
                 align-items: stretch;
@@ -461,7 +533,7 @@
             }
             
             .banner h1 {
-                font-size: 1.8rem;
+                font-size: 1.9rem;
             }
             
             .banner p {
@@ -476,16 +548,20 @@
             .icon-section {
                 width: 70px;
             }
+            
+            .score-display {
+                font-size: 4rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- 管理员登录面板 -->
-        <div class="admin-panel">
+        <!-- 管理员工具栏 -->
+        <div class="admin-toolbar">
             <div class="system-title">
-                <i class="fas fa-user-shield"></i>
-                <span>考试管理系统</span>
+                <i id="systemIcon" class="fas fa-graduation-cap"></i>
+                <span id="systemName">考试管理系统</span>
             </div>
             
             <div class="admin-form">
@@ -499,87 +575,17 @@
         </div>
         
         <!-- Banner区域 -->
-        <div class="banner">
-            <h1>考试服务平台</h1>
-            <p>专业、高效、安全的考试服务解决方案</p>
+        <div class="banner" id="mainBanner">
+            <h1 id="bannerTitle">考试服务平台</h1>
+            <p id="bannerSubtitle">专业、高效、安全的考试服务解决方案</p>
         </div>
         
         <!-- 主功能区 -->
-        <div class="content-area">
-            <h2 class="section-title">考试服务功能</h2>
+        <div class="content-area" id="mainContent">
+            <h2 class="section-title" id="sectionTitle">考试服务功能</h2>
             
-            <div class="buttons-container">
-                <div class="exam-btn" id="signupBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-user-edit"></i>
-                    </div>
-                    <div class="text-section">
-                        考试报名
-                    </div>
-                </div>
-                
-                <div class="exam-btn" id="signupStatusBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="text-section">
-                        报名状态查询
-                    </div>
-                </div>
-                
-                <div class="exam-btn" id="printFormBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <div class="text-section">
-                        报名表打印
-                    </div>
-                </div>
-                
-                <div class="exam-btn" id="printTicketBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-ticket-alt"></i>
-                    </div>
-                    <div class="text-section">
-                        准考证打印
-                    </div>
-                </div>
-                
-                <div class="exam-btn" id="scoreQueryBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="text-section">
-                        考试成绩信息查询
-                    </div>
-                </div>
-                
-                <div class="exam-btn" id="passQueryBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div class="text-section">
-                        考试合格信息查询
-                    </div>
-                </div>
-                
-                <div class="exam-btn" id="bookOrderBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <div class="text-section">
-                        考试用书订购
-                    </div>
-                </div>
-                
-                <div class="exam-btn" id="supportBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <div class="text-section">
-                        咨询答疑
-                    </div>
-                </div>
+            <div class="buttons-container" id="buttonsContainer">
+                <!-- 功能按钮会在这里动态生成 -->
             </div>
             
             <!-- 考试成绩查询表单 -->
@@ -601,7 +607,7 @@
                     <input type="text" id="idCard" placeholder="请输入18位身份证号码">
                 </div>
                 
-                <button class="submit-btn">查询考试成绩</button>
+                <button class="submit-btn" id="submitQuery">查询考试成绩</button>
             </div>
             
             <!-- 管理员控制面板 -->
@@ -615,8 +621,62 @@
                         <span id="adminNameDisplay">未登录</span>
                     </div>
                     <div class="admin-control-row">
-                        <button id="logoutBtn" style="background-color: var(--warning);">
-                            <i class="fas fa-sign-out-alt"></i> 退出登录
+                        <label for="systemNameInput">系统名称：</label>
+                        <input type="text" id="systemNameInput" placeholder="输入系统名称">
+                    </div>
+                    <div class="admin-control-row">
+                        <button id="updateSystemName">
+                            <i class="fas fa-save"></i> 更新系统名称
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="admin-section">
+                    <h3>自定义 Banner</h3>
+                    <div class="admin-control-row">
+                        <label for="bannerImage">背景图片 URL：</label>
+                        <input type="text" id="bannerImage" placeholder="输入新背景图片URL">
+                    </div>
+                    <div class="admin-control-row">
+                        <label for="bannerTitleInput">主标题：</label>
+                        <input type="text" id="bannerTitleInput" placeholder="输入新主标题">
+                    </div>
+                    <div class="admin-control-row">
+                        <label for="bannerSubtitleInput">副标题：</label>
+                        <input type="text" id="bannerSubtitleInput" placeholder="输入新副标题">
+                    </div>
+                    <div class="admin-control-row">
+                        <button id="updateBannerBtn">
+                            <i class="fas fa-sync-alt"></i> 更新Banner
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="admin-section">
+                    <h3>功能按钮管理</h3>
+                    <div class="admin-control-row">
+                        <label for="buttonTitle">按钮名称：</label>
+                        <input type="text" id="buttonTitle" placeholder="例如：考试报名">
+                    </div>
+                    <div class="admin-control-row">
+                        <label for="buttonIcon">图标选择：</label>
+                        <select id="buttonIcon">
+                            <option value="fa-user-edit">用户编辑</option>
+                            <option value="fa-search">搜索</option>
+                            <option value="fa-file-alt">文件</option>
+                            <option value="fa-ticket-alt">准考证</option>
+                            <option value="fa-chart-bar">成绩图表</option>
+                            <option value="fa-check-circle">合格标记</option>
+                            <option value="fa-book">书本</option>
+                            <option value="fa-headset">客服</option>
+                        </select>
+                    </div>
+                    <div class="admin-control-row">
+                        <button id="updateButton">
+                            <i class="fas fa-save"></i> 更新按钮
+                        </button>
+                        <button id="resetButtons">
+                            <i class="fas fa-undo"></i> 恢复默认
                         </button>
                     </div>
                 </div>
@@ -640,28 +700,61 @@
                         <input type="number" id="score" min="0" max="100" placeholder="0-100">
                     </div>
                     <div class="admin-control-row">
-                        <button id="addScoreBtn" style="background-color: var(--success);">
+                        <button id="addScoreBtn">
                             <i class="fas fa-plus-circle"></i> 添加成绩
                         </button>
                     </div>
                     
                     <h3>成绩数据表</h3>
-                    <table class="student-table">
-                        <thead>
-                            <tr>
-                                <th>姓名</th>
-                                <th>准考证号</th>
-                                <th>科目</th>
-                                <th>分数</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody id="studentTableBody">
-                            <!-- 学生数据将在这里动态生成 -->
-                        </tbody>
-                    </table>
+                    <div style="overflow-x: auto;">
+                        <table class="student-table">
+                            <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>准考证号</th>
+                                    <th>科目</th>
+                                    <th>分数</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentTableBody">
+                                <!-- 学生数据将在这里动态生成 -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+        </div>
+        
+        <!-- 考试成绩展示页面 -->
+        <div class="content-area" id="scoreResultPage">
+            <h2 class="section-title">考试成绩详情</h2>
+            
+            <div class="score-card">
+                <div class="student-id">准考证号: <span id="resultExamNumber">S20230001</span></div>
+                <div class="student-name"><span id="resultStudentName">张三</span></div>
+                <div class="score-display"><span id="resultScore">92</span></div>
+                
+                <div class="score-result">
+                    <div>
+                        <div class="result-label">考试科目</div>
+                        <div class="result-value" id="resultSubject">计算机网络</div>
+                    </div>
+                    <div>
+                        <div class="result-label">考试等级</div>
+                        <div class="result-value" id="resultLevel">优秀</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="score-chart">
+                <!-- 成绩图表 -->
+                <canvas id="scoreChart"></canvas>
+            </div>
+            
+            <button class="back-btn" id="backToMain">
+                <i class="fas fa-arrow-left"></i> 返回主页
+            </button>
         </div>
         
         <!-- 页脚 -->
@@ -669,67 +762,90 @@
             <div class="footer-content">
                 <p>考试管理系统 © 2023</p>
                 <p>服务热线: 400-888-8888 | 电子邮件: support@exam-system.edu.cn</p>
-                <p>技术支持：系统管理部 | 当前版本: v3.0</p>
+                <p>技术支持：系统管理部 | 当前版本: v4.0</p>
             </div>
         </footer>
     </div>
-    
-    <!-- 登录状态提示 -->
-    <div class="login-status" id="loginStatus">
-        <i class="fas fa-check-circle" style="color: #27ae60;"></i>
-        <span>管理员登录成功！</span>
-    </div>
 
+    <!-- 图表库 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <script>
-        // 解决刷新恢复问题的关键：使用localStorage保存所有数据
-        // 管理员登录信息（实际应用中应加密保存）
-        const adminCredentials = {
-            username: "admin",
-            password: "ExamSystem2023@" // 管理员密码
+        // 系统默认配置
+        const systemConfig = {
+            bannerImage: 'https://images.unsplash.com/photo-1498243691581-b4c52b5dc3d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80',
+            bannerTitle: '考试服务平台',
+            bannerSubtitle: '专业、高效、安全的考试服务解决方案',
+            systemName: '考试管理系统',
+            systemIcon: 'fa-graduation-cap',
+            buttons: [
+                { title: '考试报名', icon: 'fa-user-edit' },
+                { title: '报名状态查询', icon: 'fa-search' },
+                { title: '报名表打印', icon: 'fa-file-alt' },
+                { title: '准考证打印', icon: 'fa-ticket-alt' },
+                { title: '考试成绩信息查询', icon: 'fa-chart-bar' },
+                { title: '考试合格信息查询', icon: 'fa-check-circle' },
+                { title: '考试用书订购', icon: 'fa-book' },
+                { title: '咨询答疑', icon: 'fa-headset' }
+            ],
+            studentScores: [
+                { name: "张三", id: "S20230001", subject: "计算机网络", score: 88 },
+                { name: "李四", id: "S20230002", subject: "数据结构", score: 92 },
+                { name: "王五", id: "S20230003", subject: "操作系统", score: 76 },
+                { name: "赵六", id: "S20230004", subject: "数据库原理", score: 85 }
+            ]
         };
         
-        // 初始化数据存储对象
-        let systemData = {
-            bannerSettings: {
-                imageUrl: "https://images.unsplash.com/photo-1498243691581-b4c52b5dc3d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
-                title: "考试服务平台",
-                subtitle: "专业、高效、安全的考试服务解决方案"
-            },
-            studentScores: [],
-            isAdminLoggedIn: false
-        };
+        // 当前配置（从本地存储加载或使用默认配置）
+        let currentConfig = JSON.parse(localStorage.getItem('examSystemConfig')) || systemConfig;
         
-        // 从本地存储加载数据
-        function loadSystemData() {
-            const savedData = localStorage.getItem('examSystemData');
-            if (savedData) {
-                systemData = JSON.parse(savedData);
-                
-                // 应用保存的banner设置
-                applyBannerSettings();
-            }
+        // 初始化系统
+        function initializeSystem() {
+            // 设置banner
+            document.getElementById('mainBanner').style.backgroundImage = 
+                `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url('${currentConfig.bannerImage}')`;
             
-            // 初始化学生成绩数据
-            if (!systemData.studentScores || systemData.studentScores.length === 0) {
-                systemData.studentScores = [
-                    { name: "张三", id: "S20230001", subject: "计算机网络", score: 88 },
-                    { name: "李四", id: "S20230002", subject: "数据结构", score: 92 },
-                    { name: "王五", id: "S20230003", subject: "操作系统", score: 76 }
-                ];
-            }
+            document.getElementById('bannerTitle').textContent = currentConfig.bannerTitle;
+            document.getElementById('bannerSubtitle').textContent = currentConfig.bannerSubtitle;
+            
+            // 设置系统名称和图标
+            document.getElementById('systemName').textContent = currentConfig.systemName;
+            document.getElementById('systemIcon').className = `fas ${currentConfig.systemIcon}`;
+            
+            // 设置功能按钮
+            renderButtons();
+            
+            // 设置学生成绩表
+            renderStudentTable();
         }
         
-        // 保存系统数据到本地存储
-        function saveSystemData() {
-            localStorage.setItem('examSystemData', JSON.stringify(systemData));
-        }
-        
-        // 应用banner设置
-        function applyBannerSettings() {
-            const banner = document.querySelector('.banner');
-            banner.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('${systemData.bannerSettings.imageUrl}')`;
-            banner.querySelector('h1').textContent = systemData.bannerSettings.title;
-            banner.querySelector('p').textContent = systemData.bannerSettings.subtitle;
+        // 渲染功能按钮
+        function renderButtons() {
+            const container = document.getElementById('buttonsContainer');
+            container.innerHTML = '';
+            
+            currentConfig.buttons.forEach(button => {
+                const btn = document.createElement('div');
+                btn.className = 'exam-btn';
+                btn.onclick = () => {
+                    if(button.title === '考试成绩信息查询') {
+                        document.getElementById('scoreForm').style.display = 'block';
+                    } else {
+                        alert(`功能 "${button.title}" 已启用！`);
+                    }
+                };
+                
+                btn.innerHTML = `
+                    <div class="icon-section">
+                        <i class="fas ${button.icon}"></i>
+                    </div>
+                    <div class="text-section">
+                        ${button.title}
+                    </div>
+                `;
+                
+                container.appendChild(btn);
+            });
         }
         
         // 渲染学生成绩表格
@@ -737,7 +853,7 @@
             const tableBody = document.getElementById('studentTableBody');
             tableBody.innerHTML = '';
             
-            systemData.studentScores.forEach((student, index) => {
+            currentConfig.studentScores.forEach((student, index) => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${student.name}</td>
@@ -758,141 +874,136 @@
             document.querySelectorAll('.delete-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
-                    if (confirm(`确定要删除 ${systemData.studentScores[index].name} 的 ${systemData.studentScores[index].subject} 成绩吗？`)) {
-                        systemData.studentScores.splice(index, 1);
-                        saveSystemData();
+                    if (confirm(`确定要删除 ${currentConfig.studentScores[index].name} 的 ${currentConfig.studentScores[index].subject} 成绩吗？`)) {
+                        currentConfig.studentScores.splice(index, 1);
+                        saveConfig();
                         renderStudentTable();
                     }
                 });
             });
         }
         
+        // 保存配置到本地存储
+        function saveConfig() {
+            localStorage.setItem('examSystemConfig', JSON.stringify(currentConfig));
+        }
+        
         // 页面加载完成后执行
         document.addEventListener('DOMContentLoaded', function() {
-            // 加载系统数据
-            loadSystemData();
-            
-            // 初始化学生表格
-            renderStudentTable();
-            
-            // 考试成绩查询按钮
-            const scoreQueryBtn = document.getElementById('scoreQueryBtn');
-            const scoreForm = document.getElementById('scoreForm');
-            
-            // 其他功能按钮
-            const featureButtons = [
-                'signupBtn', 'signupStatusBtn', 'printFormBtn', 
-                'printTicketBtn', 'passQueryBtn', 'bookOrderBtn', 
-                'supportBtn'
-            ];
-            
-            const adminControls = document.getElementById('adminControls');
-            const loginStatus = document.getElementById('loginStatus');
-            
-            // 显示管理员面板（如果之前已登录）
-            if (systemData.isAdminLoggedIn) {
-                adminControls.style.display = 'block';
-                scoreForm.style.display = 'none';
-                document.getElementById('adminNameDisplay').textContent = adminCredentials.username;
-            }
-            
-            // 考试成绩查询按钮事件
-            scoreQueryBtn.addEventListener('click', function() {
-                scoreForm.style.display = 'block';
-                adminControls.style.display = 'none';
-            });
-            
-            // 其他功能按钮事件
-            featureButtons.forEach(btnId => {
-                document.getElementById(btnId).addEventListener('click', function() {
-                    alert('此功能正在开发中，即将上线！');
-                });
-            });
+            // 初始化系统
+            initializeSystem();
             
             // 管理员登录按钮事件
-            const loginBtn = document.getElementById('loginBtn');
-            loginBtn.addEventListener('click', function() {
+            document.getElementById('loginBtn').addEventListener('click', function() {
                 const username = document.getElementById('username').value;
                 const password = document.getElementById('password').value;
                 
-                if(username === adminCredentials.username && password === adminCredentials.password) {
-                    // 显示成功提示
-                    loginStatus.classList.add('active');
+                // 默认管理员凭证（管理员密码：Admin123）
+                if(username === 'admin' && password === 'Admin123') {
+                    // 显示管理员面板
+                    document.getElementById('adminControls').style.display = 'block';
                     document.getElementById('adminNameDisplay').textContent = username;
                     
-                    // 更新登录状态
-                    systemData.isAdminLoggedIn = true;
-                    saveSystemData();
+                    // 设置表单值
+                    document.getElementById('systemNameInput').value = currentConfig.systemName;
+                    document.getElementById('bannerImage').value = currentConfig.bannerImage;
+                    document.getElementById('bannerTitleInput').value = currentConfig.bannerTitle;
+                    document.getElementById('bannerSubtitleInput').value = currentConfig.bannerSubtitle;
                     
-                    // 显示管理员控制面板
-                    adminControls.style.display = 'block';
-                    scoreForm.style.display = 'none';
-                    
-                    // 5秒后隐藏提示
-                    setTimeout(() => {
-                        loginStatus.classList.remove('active');
-                    }, 5000);
+                    alert('管理员登录成功！您可以修改系统设置');
                 } else {
-                    alert('登录失败！请检查您的用户名和密码');
+                    alert('登录失败！用户名或密码错误\n提示：用户名为"admin"，密码为"Admin123"');
                 }
             });
             
-            // 退出登录按钮事件
-            const logoutBtn = document.getElementById('logoutBtn');
-            logoutBtn.addEventListener('click', function() {
-                systemData.isAdminLoggedIn = false;
-                saveSystemData();
-                adminControls.style.display = 'none';
-                alert('您已成功退出管理员账号！');
+            // 更新系统名称
+            document.getElementById('updateSystemName').addEventListener('click', function() {
+                const newName = document.getElementById('systemNameInput').value;
+                if(newName) {
+                    currentConfig.systemName = newName;
+                    document.getElementById('systemName').textContent = newName;
+                    saveConfig();
+                    alert('系统名称已更新！');
+                } else {
+                    alert('请输入系统名称');
+                }
             });
             
-            // 考试成绩查询表单提交
-            const submitBtn = document.querySelector('.submit-btn');
-            submitBtn.addEventListener('click', function() {
-                const name = document.getElementById('name').value;
-                const examNumber = document.getElementById('examNumber').value;
-                const idCard = document.getElementById('idCard').value;
+            // 更新Banner
+            document.getElementById('updateBannerBtn').addEventListener('click', function() {
+                const imageUrl = document.getElementById('bannerImage').value || systemConfig.bannerImage;
+                const title = document.getElementById('bannerTitleInput').value || systemConfig.bannerTitle;
+                const subtitle = document.getElementById('bannerSubtitleInput').value || systemConfig.bannerSubtitle;
                 
-                if(name && examNumber && idCard) {
-                    // 在实际应用中，这里应该查询学生成绩
-                    alert(`正在查询考生成绩...\n姓名: ${name}\n准考证号: ${examNumber}`);
-                    
-                    // 这里模拟从数据中查找成绩
-                    const student = systemData.studentScores.find(s => 
-                        s.id === examNumber && s.name === name
-                    );
-                    
-                    if (student) {
-                        alert(`找到考生成绩！\n姓名: ${student.name}\n准考证号: ${student.id}\n科目: ${student.subject}\n分数: ${student.score}`);
-                    } else {
-                        alert('未找到匹配的考生成绩记录');
+                currentConfig.bannerImage = imageUrl;
+                currentConfig.bannerTitle = title;
+                currentConfig.bannerSubtitle = subtitle;
+                
+                document.getElementById('mainBanner').style.backgroundImage = 
+                    `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url('${imageUrl}')`;
+                document.getElementById('bannerTitle').textContent = title;
+                document.getElementById('bannerSubtitle').textContent = subtitle;
+                
+                saveConfig();
+                alert('Banner已更新！');
+            });
+            
+            // 更新按钮
+            document.getElementById('updateButton').addEventListener('click', function() {
+                const buttonTitle = document.getElementById('buttonTitle').value;
+                const buttonIcon = document.getElementById('buttonIcon').value;
+                
+                if(buttonTitle) {
+                    // 尝试找到已有按钮并更新
+                    let updated = false;
+                    for(let i = 0; i < currentConfig.buttons.length; i++) {
+                        if(currentConfig.buttons[i].title.includes(buttonTitle)) {
+                            currentConfig.buttons[i].icon = buttonIcon;
+                            updated = true;
+                            break;
+                        }
                     }
+                    
+                    // 如果没有找到，创建一个新按钮
+                    if(!updated) {
+                        currentConfig.buttons.push({
+                            title: buttonTitle,
+                            icon: buttonIcon
+                        });
+                    }
+                    
+                    renderButtons();
+                    saveConfig();
+                    alert('功能按钮已更新！');
                 } else {
-                    alert('请完整填写所有查询信息');
+                    alert('请输入按钮名称');
                 }
+            });
+            
+            // 重置按钮
+            document.getElementById('resetButtons').addEventListener('click', function() {
+                currentConfig.buttons = [...systemConfig.buttons];
+                renderButtons();
+                saveConfig();
+                alert('所有按钮已恢复为默认设置！');
             });
             
             // 添加学生成绩
-            const addScoreBtn = document.getElementById('addScoreBtn');
-            addScoreBtn.addEventListener('click', function() {
+            document.getElementById('addScoreBtn').addEventListener('click', function() {
                 const name = document.getElementById('studentName').value;
                 const id = document.getElementById('studentId').value;
                 const subject = document.getElementById('subject').value;
                 const score = document.getElementById('score').value;
                 
                 if(name && id && subject && score) {
-                    // 添加到系统数据
-                    systemData.studentScores.push({ 
+                    currentConfig.studentScores.push({ 
                         name, 
                         id, 
                         subject, 
                         score: parseInt(score) 
                     });
                     
-                    // 保存数据
-                    saveSystemData();
-                    
-                    // 更新表格
+                    saveConfig();
                     renderStudentTable();
                     
                     // 清空表单
@@ -906,6 +1017,111 @@
                     alert('请填写完整的学生成绩信息');
                 }
             });
+            
+            // 成绩查询提交
+            document.getElementById('submitQuery').addEventListener('click', function() {
+                const name = document.getElementById('name').value;
+                const examNumber = document.getElementById('examNumber').value;
+                
+                if(name && examNumber) {
+                    // 查找学生成绩
+                    const student = currentConfig.studentScores.find(s => 
+                        s.name === name && s.id === examNumber
+                    );
+                    
+                    if(student) {
+                        // 显示成绩结果页面
+                        document.getElementById('scoreResultPage').style.display = 'block';
+                        document.getElementById('mainContent').style.display = 'none';
+                        
+                        // 设置成绩信息
+                        document.getElementById('resultStudentName').textContent = student.name;
+                        document.getElementById('resultExamNumber').textContent = student.id;
+                        document.getElementById('resultSubject').textContent = student.subject;
+                        document.getElementById('resultScore').textContent = student.score;
+                        
+                        // 设置考试等级
+                        const level = student.score >= 90 ? '优秀' : 
+                                    student.score >= 80 ? '良好' : 
+                                    student.score >= 70 ? '中等' : 
+                                    student.score >= 60 ? '及格' : '不及格';
+                        document.getElementById('resultLevel').textContent = level;
+                        
+                        // 创建成绩图表
+                        renderScoreChart(student.score);
+                    } else {
+                        alert('未找到对应的学生成绩记录');
+                    }
+                } else {
+                    alert('请填写姓名和准考证号');
+                }
+            });
+            
+            // 返回主页面
+            document.getElementById('backToMain').addEventListener('click', function() {
+                document.getElementById('scoreResultPage').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+                document.getElementById('scoreForm').style.display = 'none';
+            });
+            
+            // 渲染成绩图表
+            function renderScoreChart(score) {
+                const ctx = document.getElementById('scoreChart').getContext('2d');
+                
+                // 如果已有图表实例，销毁它
+                if(window.scoreChartInstance) {
+                    window.scoreChartInstance.destroy();
+                }
+                
+                // 创建新图表
+                window.scoreChartInstance = new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['理论', '实践', '应用', '分析', '创新'],
+                        datasets: [{
+                            label: '能力维度',
+                            data: [
+                                Math.min(100, score + 10), 
+                                Math.min(100, score - 5),
+                                Math.min(100, score + 15),
+                                Math.min(100, score - 8),
+                                Math.min(100, score + 5)
+                            ],
+                            backgroundColor: 'rgba(77, 159, 206, 0.2)',
+                            borderColor: 'rgba(77, 159, 206, 1)',
+                            borderWidth: 2,
+                            pointBackgroundColor: 'rgba(77, 159, 206, 1)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(77, 159, 206, 1)'
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            r: {
+                                angleLines: {
+                                    display: true
+                                },
+                                suggestedMin: 0,
+                                suggestedMax: 100,
+                                ticks: {
+                                    stepSize: 20
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    font: {
+                                        size: 14,
+                                        family: "'Segoe UI', 'Microsoft YaHei', sans-serif"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
         });
     </script>
 </body>
