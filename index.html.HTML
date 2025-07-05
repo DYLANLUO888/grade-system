@@ -30,7 +30,6 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             overflow: hidden;
-            position: relative;
         }
         
         /* Certificate Header */
@@ -152,18 +151,6 @@
             opacity: 0.8;
         }
         
-        /* Watermark */
-        .watermark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 20rem;
-            color: rgba(0, 0, 0, 0.03);
-            z-index: 0;
-            pointer-events: none;
-        }
-        
         /* Responsive Design */
         @media (max-width: 768px) {
             .certificate-header {
@@ -185,10 +172,6 @@
             .info-content {
                 font-size: 1.5rem;
             }
-            
-            .watermark {
-                font-size: 15rem;
-            }
         }
         
         @media (max-width: 480px) {
@@ -208,68 +191,48 @@
             .certificate-info {
                 gap: 20px;
             }
-            
-            .watermark {
-                font-size: 10rem;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="certificate-container">
-        <div class="watermark">
-            <i class="fas fa-certificate"></i>
-        </div>
-        
-        <!-- Certificate Header -->
-        <div class="certificate-header">
-            <h1>Brand Authorization Certificate</h1>
-            <p>Official Authorization Document</p>
-            <div class="status-badge">
-                <i class="fas fa-check-circle"></i>
-                Authorization Verified Successfully
-            </div>
-        </div>
-        
-        <!-- Certificate Content -->
-        <div class="certificate-content">
-            <div class="certificate-info">
-                <div class="info-card">
-                    <div class="info-title">Authorization Number</div>
-                    <div class="info-content">EL-VHI-2025-0705-A372</div>
-                </div>
-                
-                <div class="info-card">
-                    <div class="info-title">Authorization Date</div>
-                    <div class="info-content"><span class="highlight">July 5, 2025</span></div>
-                </div>
-                
-                <div class="info-card">
-                    <div class="info-title">Authorization Status</div>
-                    <div class="info-content"><span class="highlight">Active</span></div>
-                </div>
-            </div>
-            
-            <div class="legal-section">
-                <div class="legal-title">Legal Validity Statement</div>
-                <div class="legal-text">
-                    <p>This Authorization Certificate is issued in accordance with the laws of the State of Delaware, United States.</p>
-                    
-                    <p>The authorization granted herein is legally binding and enforceable under the Uniform Commercial Code (UCC) and relevant intellectual property laws.</p>
-                    
-                    <p>This document certifies that <strong>VINTAGEHAOY INC</strong> is duly authorized by <strong>ERNO LASZLO, INC.</strong> to sell and distribute all current and future ERNO LASZLO branded products worldwide through the SHEIN platform, effective from July 5, 2025 for a period of one (1) year.</p>
-                    
-                    <p>This authorization is governed by and construed in accordance with the laws of the State of Delaware, without regard to its conflict of laws principles.</p>
-                </div>
-            </div>
-            
-            <div class="certificate-footer">
-                <div class="footer-content">
-                    <p>Brand Authorization Certificate Verification System © 2023</p>
-                    <p>This document is electronically generated and valid without signature</p>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="certificate-container"><!-- Certificate Header -->
+<div class="certificate-header">
+<h1>Brand Authorization Certificate</h1>
+<p>Official Authorization Document</p>
+<div class="status-badge">Authorization Verified Successfully</div>
+</div>
+<!-- Certificate Content -->
+<div class="certificate-content">
+<div class="certificate-info">
+<div class="info-card">
+<div class="info-title">Authorization Number</div>
+<div class="info-content">EL-VHI-2025-0705-A372</div>
+</div>
+<div class="info-card">
+<div class="info-title">Authorization Date</div>
+<div class="info-content"><span class="highlight">July 5, 2025</span></div>
+</div>
+<div class="info-card">
+<div class="info-title">Authorization Status</div>
+<div class="info-content"><span class="highlight">Active</span></div>
+</div>
+</div>
+<div class="legal-section">
+<div class="legal-title">Legal Validity Statement</div>
+<div class="legal-text">
+<p>This Authorization Certificate is issued in accordance with the laws of the State of Delaware, United States.</p>
+<p>The authorization granted herein is legally binding and enforceable under the Uniform Commercial Code (UCC) and relevant intellectual property laws.</p>
+<p>This document certifies that <strong>VINTAGEHAOY INC</strong> is duly authorized by <strong>ERNO LASZLO, INC.</strong> to sell and distribute all current and future ERNO LASZLO branded products worldwide through the SHEIN platform, effective from July 5, 2025 for a period of one (1) year.</p>
+<p>This authorization is governed by and construed in accordance with the laws of the State of Delaware, without regard to its conflict of laws principles.</p>
+</div>
+</div>
+<div class="certificate-footer">
+<div class="footer-content">
+<p>Brand Authorization Certificate Verification System &copy; 2023</p>
+<p>This document is electronically generated and valid without signature</p>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>
