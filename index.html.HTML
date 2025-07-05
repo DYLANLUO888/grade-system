@@ -1,33 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中国人民共和国财政部</title>
+    <title>Brand Authorization Certificate</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
-        }
-        
-        :root {
-            --primary: #1a3c6c;
-            --secondary: #2a5298;
-            --accent: #4d9fce;
-            --light: #f0f8ff;
-            --success: #27ae60;
-            --warning: #f39c12;
-            --error: #e74c3c;
-            --gray: #95a5a6;
-            --dark: #2c3e50;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #1a3c6c 0%, #2a5298 100%);
-            color: white;
+            background: #f8f9fa;
+            color: #333;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -35,1172 +23,253 @@
             padding: 20px;
         }
         
-        .container {
+        .certificate-container {
             width: 100%;
-            max-width: 1200px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        /* 管理员登录面板 */
-        .admin-panel {
-            background: rgba(255, 255, 255, 0.98);
-            padding: 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-bottom: 3px solid var(--accent);
-        }
-        
-        .system-title {
-            font-size: 1.8rem;
-            color: var(--primary);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .admin-form {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        
-        .admin-form input {
-            padding: 12px 18px;
-            border-radius: 8px;
-            border: 2px solid #ddd;
-            font-size: 16px;
-            min-width: 220px;
-            transition: all 0.3s;
-        }
-        
-        .admin-form input:focus {
-            border-color: var(--accent);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(77, 159, 206, 0.3);
-        }
-        
-        .admin-form button {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .admin-form button:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(26, 60, 108, 0.3);
-        }
-        
-        /* Banner区域 */
-        .banner {
-            position: relative;
-            height: 350px;
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), 
-                        url('https://images.unsplash.com/photo-1501504905252-873c1e0b6980?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=500&q=80') center/cover;
-            transition: background-image 0.5s;
-        }
-        
-        /* 主功能区 */
-        .content-area {
-            padding: 40px 30px;
-            background: #fafcff;
-            min-height: 500px;
-        }
-        
-        .section-title {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid var(--accent);
-            text-align: center;
-        }
-        
-        /* 功能按钮区 */
-        .buttons-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .exam-btn {
-            display: flex;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            background: white;
-            position: relative;
-            min-height: 80px;
-            border: 1px solid #e0e7ff;
-        }
-        
-        .exam-btn:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 12px 20px rgba(0, 92, 168, 0.25);
-        }
-        
-        .icon-section {
-            width: 80px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: var(--accent);
-            position: relative;
-        }
-        
-        .icon-section i {
-            color: white;
-            font-size: 30px;
-            z-index: 2;
-        }
-        
-        .text-section {
-            flex: 1;
-            background: white;
-            color: var(--primary);
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            font-weight: 600;
-            font-size: 18px;
-            position: relative;
-        }
-        
-        /* 考试成绩查询表单 */
-        .exam-form-container {
-            display: none;
-            margin: 50px auto 30px;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            border: 1px solid #e0e7ff;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-        
-        .form-group input:focus {
-            border-color: var(--accent);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(77, 159, 206, 0.3);
-        }
-        
-        .submit-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-size: 18px;
-            cursor: pointer;
-            font-weight: 600;
-            display: block;
-            width: 100%;
-            margin-top: 10px;
-            transition: all 0.3s;
-        }
-        
-        .submit-btn:hover {
-            opacity: 0.9;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(26, 60, 108, 0.3);
-        }
-        
-        /* 成绩显示区域 - 新增 */
-        .score-display-container {
-            display: none;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             max-width: 800px;
-            margin: 30px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Certificate Header */
+        .certificate-header {
+            background: #000;
+            color: white;
             padding: 40px;
             text-align: center;
-            border: 1px solid #e0e7ff;
+            position: relative;
         }
         
-        .score-header {
-            background: var(--primary);
-            color: white;
-            padding: 20px;
-            border-radius: 10px 10px 0 0;
-            margin-bottom: 30px;
+        .certificate-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            font-weight: 300;
         }
         
-        .score-title {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .exam-info {
+        .certificate-header p {
             font-size: 1.2rem;
-            margin-bottom: 5px;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .status-badge {
+            background: #27ae60;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 25px;
+        }
+        
+        /* Certificate Content */
+        .certificate-content {
+            padding: 50px;
+            text-align: center;
+        }
+        
+        .certificate-info {
             display: flex;
             justify-content: center;
-            gap: 30px;
-        }
-        
-        .scores-container {
-            display: flex;
-            justify-content: space-around;
-            margin: 40px 0;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 40px;
+            margin-bottom: 50px;
         }
         
-        .subject-card {
-            flex: 1;
-            min-width: 300px;
+        .info-card {
+            min-width: 250px;
             padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            background: linear-gradient(145deg, #f5f9ff, #e6f0ff);
-            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #f9f9f9;
         }
         
-        .subject-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 92, 168, 0.15);
-        }
-        
-        .subject-name {
-            font-size: 1.8rem;
-            color: var(--dark);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        .score-value {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin: 15px 0;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .score-label {
-            font-size: 1.2rem;
-            color: var(--gray);
-            margin-top: 5px;
-        }
-        
-        .pass-status {
-            display: inline-block;
-            padding: 8px 20px;
-            border-radius: 30px;
+        .info-title {
             font-size: 1.1rem;
-            font-weight: 600;
-            margin-top: 15px;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
-        .pass {
-            background-color: rgba(39, 174, 96, 0.15);
+        .info-content {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #000;
+        }
+        
+        .highlight {
             color: #27ae60;
         }
         
-        .fail {
-            background-color: rgba(231, 76, 60, 0.15);
-            color: #e74c3c;
-        }
-        
-        .exam-details {
-            margin-top: 30px;
-            text-align: left;
-            border-top: 1px dashed #ddd;
-            padding-top: 20px;
-            color: var(--dark);
-        }
-        
-        .exam-details h3 {
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent);
-            color: var(--primary);
-            font-size: 1.4rem;
-        }
-        
-        .detail-row {
-            display: flex;
-            margin-bottom: 12px;
-        }
-        
-        .detail-label {
-            width: 40%;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .detail-value {
-            width: 60%;
-            text-align: right;
-        }
-        
-        .action-buttons {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .action-btn {
-            padding: 12px 35px;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-        }
-        
-        .back-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-        }
-        
-        .certificate-btn {
-            background: linear-gradient(135deg, var(--success) 0%, #2ecc71 100%);
-            color: white;
-        }
-        
-        /* 管理员控制面板 */
-        .admin-controls {
-            display: none;
-            background: white;
+        .legal-section {
+            background: #f5f5f5;
             padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
             margin-top: 40px;
-            border: 1px solid #e0e7ff;
-        }
-        
-        .admin-section {
-            margin-bottom: 30px;
-        }
-        
-        .admin-section h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent);
-        }
-        
-        .admin-control-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 15px;
-            align-items: center;
-        }
-        
-        .admin-control-row label {
-            min-width: 150px;
-            color: var(--dark);
-            font-weight: 500;
-        }
-        
-        .admin-control-row input, .admin-control-row select {
-            flex: 1;
-            min-width: 250px;
-            padding: 10px 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-        }
-        
-        .admin-control-row button {
-            padding: 10px 25px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .admin-control-row button:hover {
-            background: #3b8ebc;
-        }
-        
-        /* 学生数据表格 */
-        .student-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        
-        .student-table th, .student-table td {
-            padding: 12px 15px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-left: 4px solid #000;
         }
         
-        .student-table th {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .student-table tr:nth-child(even) {
-            background-color: #f2f7ff;
-        }
-        
-        .student-table tr:hover {
-            background-color: #e6f0ff;
-        }
-        
-        /* 登录状态提示 */
-        .login-status {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            padding: 15px 30px;
-            background: white;
-            border-radius: 50px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .legal-title {
+            font-size: 1.3rem;
+            color: #000;
+            margin-bottom: 15px;
             font-weight: 600;
-            color: var(--primary);
-            z-index: 100;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.5s ease;
         }
         
-        .login-status.active {
-            transform: translateY(0);
-            opacity: 1;
+        .legal-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #444;
         }
         
-        /* 页脚 */
-        footer {
-            background: var(--primary);
+        .legal-text strong {
+            color: #000;
+        }
+        
+        .certificate-footer {
+            background: #000;
             color: white;
-            padding: 30px;
+            padding: 25px;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 40px;
         }
         
         .footer-content {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
         
-        /* 响应式设计 */
-        @media (max-width: 1024px) {
-            .buttons-container {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            color: rgba(0, 0, 0, 0.03);
+            z-index: 0;
+            pointer-events: none;
         }
         
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .buttons-container {
-                grid-template-columns: 1fr;
+            .certificate-header {
+                padding: 30px 20px;
             }
             
-            .banner {
-                height: 280px;
+            .certificate-header h1 {
+                font-size: 2rem;
             }
             
-            .section-title {
-                font-size: 1.8rem;
+            .certificate-content {
+                padding: 30px;
             }
             
-            .admin-form {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .scores-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .subject-card {
+            .info-card {
                 min-width: 100%;
             }
             
-            .detail-row {
-                flex-direction: column;
+            .info-content {
+                font-size: 1.5rem;
             }
             
-            .detail-label, .detail-value {
-                width: 100%;
-                text-align: left;
+            .watermark {
+                font-size: 15rem;
             }
         }
         
         @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-            
-            .admin-panel {
-                padding: 15px;
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .system-title {
-                justify-content: center;
-            }
-            
-            .admin-form input {
-                min-width: 100%;
-                width: 100%;
-            }
-            
-            .admin-form button {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .banner {
-                height: 220px;
-            }
-            
-            .text-section {
-                padding: 15px;
-                font-size: 16px;
-            }
-            
-            .icon-section {
-                width: 70px;
-            }
-            
-            .score-header {
-                padding: 15px;
-            }
-            
-            .score-title {
+            .certificate-header h1 {
                 font-size: 1.8rem;
             }
             
-            .exam-info {
-                flex-direction: column;
-                gap: 5px;
+            .certificate-header p {
+                font-size: 1rem;
             }
             
-            .action-buttons {
-                flex-direction: column;
-                gap: 10px;
+            .status-badge {
+                font-size: 1.2rem;
+                padding: 8px 20px;
             }
             
-            .action-btn {
-                width: 100%;
+            .certificate-info {
+                gap: 20px;
+            }
+            
+            .watermark {
+                font-size: 10rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="admin-panel">
-            <div class="system-title">
-                <i class="fas fa-user-shield"></i>
-                <span>考试管理系统</span>
-            </div>
-            
-            <div class="admin-form">
-                <input type="text" id="username" placeholder="管理员账号">
-                <input type="password" id="password" placeholder="管理员密码">
-                <button id="loginBtn">
-                    <i class="fas fa-sign-in-alt"></i> 
-                    <span>管理员登录</span>
-                </button>
+    <div class="certificate-container">
+        <div class="watermark">
+            <i class="fas fa-certificate"></i>
+        </div>
+        
+        <!-- Certificate Header -->
+        <div class="certificate-header">
+            <h1>Brand Authorization Certificate</h1>
+            <p>Official Authorization Document</p>
+            <div class="status-badge">
+                <i class="fas fa-check-circle"></i>
+                Authorization Verified Successfully
             </div>
         </div>
         
-       <div class="banner"></div>
-
-<style>
-.banner {
-  width: 100%;
-  max-width: 600px; /* 控制最大宽度 */
-  height: auto;
-  aspect-ratio: 16 / 6;
-  margin: 0 auto;
-  background-image: url('https://i.ibb.co/5x6c3dYD/logo.png');
-  background-size: contain; /* ✅ 关键点：完整显示整个图片 */
-  background-repeat: no-repeat;
-  background-position: center;
-}
-</style>
-
-        
-        <div class="content-area">
-            <h2 class="section-title">考试服务功能</h2>
-            
-            <div class="buttons-container" id="mainButtons">
-                <div class="exam-btn" id="signupBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-user-edit"></i>
-                    </div>
-                    <div class="text-section">
-                        考试报名
-                    </div>
+        <!-- Certificate Content -->
+        <div class="certificate-content">
+            <div class="certificate-info">
+                <div class="info-card">
+                    <div class="info-title">Authorization Number</div>
+                    <div class="info-content">EL-VHI-2025-0705-A372</div>
                 </div>
                 
-                <div class="exam-btn" id="signupStatusBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="text-section">
-                        报名状态查询
-                    </div>
+                <div class="info-card">
+                    <div class="info-title">Authorization Date</div>
+                    <div class="info-content"><span class="highlight">July 5, 2025</span></div>
                 </div>
                 
-                <div class="exam-btn" id="printFormBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <div class="text-section">
-                        报名表打印
-                    </div>
-                </div>
-                
-                <div class="exam-btn" id="printTicketBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-ticket-alt"></i>
-                    </div>
-                    <div class="text-section">
-                        准考证打印
-                    </div>
-                </div>
-                
-                <div class="exam-btn" id="scoreQueryBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="text-section">
-                        考试成绩信息查询
-                    </div>
-                </div>
-                
-                <div class="exam-btn" id="passQueryBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div class="text-section">
-                        考试合格信息查询
-                    </div>
-                </div>
-                
-                <div class="exam-btn" id="bookOrderBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <div class="text-section">
-                        考试用书订购
-                    </div>
-                </div>
-                
-                <div class="exam-btn" id="supportBtn">
-                    <div class="icon-section">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <div class="text-section">
-                        咨询答疑
-                    </div>
+                <div class="info-card">
+                    <div class="info-title">Authorization Status</div>
+                    <div class="info-content"><span class="highlight">Active</span></div>
                 </div>
             </div>
             
-            <div class="exam-form-container" id="scoreForm">
-                <h2 class="section-title">考试成绩查询</h2>
-                
-                <div class="form-group">
-                    <label for="name">考生姓名</label>
-                    <input type="text" id="name" placeholder="请输入您的真实姓名">
-                </div>
-                
-                <div class="form-group">
-                    <label for="examNumber">准考证号</label>
-                    <input type="text" id="examNumber" placeholder="请输入10位准考证号码">
-                </div>
-                
-                <div class="form-group">
-                    <label for="idCard">身份证号</label>
-                    <input type="text" id="idCard" placeholder="请输入18位身份证号码">
-                </div>
-                
-                <button class="submit-btn" id="submitScoreQuery">查询考试成绩</button>
-            </div>
-            
-            <div class="score-display-container" id="scoreDisplay">
-                <div class="score-header">
-                    <h2 class="score-title">会计专业技术资格考试</h2>
-                    <div class="exam-info">
-                        <span><i class="fas fa-user"></i> 考生：<span id="studentNameDisplay"></span></span>
-                        <span><i class="fas fa-id-card"></i> 准考证：<span id="examNumberDisplay"></span></span>
-                    </div>
-                </div>
-                
-                <div class="scores-container" id="scoresResultContainer">
-                    </div>
-                
-                <div class="summary" id="summaryResult">
-                    </div>
-                
-                <div class="action-buttons">
-                    <button class="action-btn back-btn" id="backToQuery"><i class="fas fa-arrow-left"></i> 返回查询</button>
-                    <button class="action-btn certificate-btn" id="certificateBtn"><i class="fas fa-certificate"></i> 下载资格证书</button>
-                </div>
-            </div>
-            
-            <div class="admin-controls" id="adminControls">
-                <h2 class="section-title">管理员控制面板</h2>
-                
-                <div class="admin-section">
-                    <h3>系统设置</h3>
-                    <div class="admin-control-row">
-                        <label>当前管理员：</label>
-                        <span id="adminNameDisplay">未登录</span>
-                    </div>
-                    <div class="admin-control-row">
-                        <button id="logoutBtn" style="background-color: var(--warning);">
-                            <i class="fas fa-sign-out-alt"></i> 退出登录
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="admin-section">
-                    <h3>学生成绩管理</h3>
-                    <div class="admin-control-row">
-                        <label for="studentName">姓名：</label>
-                        <input type="text" id="adminStudentName" placeholder="学生姓名">
-                    </div>
-                    <div class="admin-control-row">
-                        <label for="studentId">准考证号：</label>
-                        <input type="text" id="adminStudentId" placeholder="准考证号">
-                    </div>
-                    <div class="admin-control-row">
-                        <label for="subject">考试科目：</label>
-                        <select id="adminSubject">
-                            <option value="经济基础法">经济基础法</option>
-                            <option value="初级会计实务">初级会计实务</option>
-                        </select>
-                    </div>
-                    <div class="admin-control-row">
-                        <label for="score">分数：</label>
-                        <input type="number" id="adminScore" min="0" max="100" placeholder="0-100">
-                    </div>
-                    <div class="admin-control-row">
-                        <button id="addScoreBtn" style="background-color: var(--success);">
-                            <i class="fas fa-plus-circle"></i> 添加成绩
-                        </button>
-                    </div>
+            <div class="legal-section">
+                <div class="legal-title">Legal Validity Statement</div>
+                <div class="legal-text">
+                    <p>This Authorization Certificate is issued in accordance with the laws of the State of Delaware, United States.</p>
                     
-                    <h3>成绩数据表</h3>
-                    <table class="student-table">
-                        <thead>
-                            <tr>
-                                <th>姓名</th>
-                                <th>准考证号</th>
-                                <th>科目</th>
-                                <th>分数</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody id="studentTableBody">
-                            </tbody>
-                    </table>
+                    <p>The authorization granted herein is legally binding and enforceable under the Uniform Commercial Code (UCC) and relevant intellectual property laws.</p>
+                    
+                    <p>This document certifies that <strong>VINTAGEHAOY INC</strong> is duly authorized by <strong>ERNO LASZLO, INC.</strong> to sell and distribute all current and future ERNO LASZLO branded products worldwide through the SHEIN platform, effective from July 5, 2025 for a period of one (1) year.</p>
+                    
+                    <p>This authorization is governed by and construed in accordance with the laws of the State of Delaware, without regard to its conflict of laws principles.</p>
+                </div>
+            </div>
+            
+            <div class="certificate-footer">
+                <div class="footer-content">
+                    <p>Brand Authorization Certificate Verification System © 2023</p>
+                    <p>This document is electronically generated and valid without signature</p>
                 </div>
             </div>
         </div>
-        
-        <footer>
-            <div class="footer-content">
-                <p>会计专业技术资格考试管理系统 © 2023</p>
-                <p>服务热线: 400-888-8888 | 电子邮件: support@exam-system.edu.cn</p>
-                <p>技术支持：会计专业技术资格考试委员会 | 当前版本: v3.0</p>
-            </div>
-        </footer>
     </div>
-    
-    <div class="login-status" id="loginStatus">
-        <i class="fas fa-check-circle" style="color: #27ae60;"></i>
-        <span id="loginStatusText"></span>
-    </div>
-
-    <script>
-        // 管理员登录信息
-        const adminCredentials = {
-            username: "admin",
-            password: "ExamSystem2023@" // 管理员密码
-        };
-        
-        // 初始化数据存储对象
-        let systemData = {
-            bannerSettings: {
-                imageUrl: "https://images.unsplash.com/photo-1501504905252-873c1e0b6980?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=500&q=80",
-                title: "",
-                subtitle: ""
-            },
-            studentScores: [],
-            isAdminLoggedIn: false
-        };
-        
-        // 从本地存储加载数据
-        function loadSystemData() {
-            const savedData = localStorage.getItem('examSystemData');
-            if (savedData) {
-                systemData = JSON.parse(savedData);
-                applyBannerSettings();
-            }
-            
-            // 初始化学生成绩数据 (仅在localStorage为空时)
-            if (!systemData.studentScores || systemData.studentScores.length === 0) {
-                systemData.studentScores = [
-                    { 
-                        name: "张三", 
-                        id: "S20230001", 
-                        subject: "经济基础法", 
-                        score: 88,
-                        examDate: "2023年6月15日",
-                        examLocation: "第一中学 102考场"
-                    },
-                    { 
-                        name: "张三", 
-                        id: "S20230001", 
-                        subject: "初级会计实务", 
-                        score: 76,
-                        examDate: "2023年6月16日",
-                        examLocation: "第一中学 105考场"
-                    },
-                    { 
-                        name: "李四", 
-                        id: "S20230002", 
-                        subject: "经济基础法", 
-                        score: 92,
-                        examDate: "2023年6月15日",
-                        examLocation: "第一中学 103考场"
-                    },
-                    { 
-                        name: "李四", 
-                        id: "S20230002", 
-                        subject: "初级会计实务", 
-                        score: 85,
-                        examDate: "2023年6月16日",
-                        examLocation: "第一中学 107考场"
-                    },
-                    { 
-                        name: "王五", 
-                        id: "S20230003", 
-                        subject: "经济基础法", 
-                        score: 95,
-                        examDate: "2023年6月15日",
-                        examLocation: "第二实验小学 201考场"
-                    },
-                    { 
-                        name: "王五", 
-                        id: "S20230003", 
-                        subject: "初级会计实务", 
-                        score: 58,
-                        examDate: "2023年6月16日",
-                        examLocation: "第二实验小学 204考场"
-                    },
-                    // --- 为 艾嘉 新增的学生成绩 ---
-                    { 
-                        name: "艾嘉", 
-                        id: "2260100117", 
-                        subject: "经济基础法", 
-                        score: 57,
-                        examDate: "2025年5月17日",
-                        examLocation: "宁夏大学贺兰山校区文荟楼"
-                    },
-                    { 
-                        name: "艾嘉", 
-                        id: "2260100117", 
-                        subject: "初级会计实务", 
-                        score: 73,
-                        examDate: "2025年5月17日",
-                        examLocation: "宁夏大学贺兰山校区文荟楼"
-                    }
-                    // --- 新增结束 ---
-                ];
-            }
-        }
-        
-        // 保存系统数据到本地存储
-        function saveSystemData() {
-            localStorage.setItem('examSystemData', JSON.stringify(systemData));
-        }
-
-        // --- 以下是其他所有功能的JavaScript代码，保持不变 ---
-        
-        // 应用banner设置
-        function applyBannerSettings() {
-            const banner = document.querySelector('.banner');
-            banner.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url('${systemData.bannerSettings.imageUrl}')`;
-        }
-        
-        // 渲染学生成绩表格
-        function renderStudentTable() {
-            const tableBody = document.getElementById('studentTableBody');
-            if (!tableBody) return;
-            tableBody.innerHTML = '';
-            
-            systemData.studentScores.forEach((student, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${student.name}</td>
-                    <td>${student.id}</td>
-                    <td>${student.subject}</td>
-                    <td>${student.score}</td>
-                    <td>
-                        <button class="delete-btn" data-index="${index}" style="background-color: var(--error); color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
-                            <i class="fas fa-trash"></i> 删除
-                        </button>
-                    </td>
-                `;
-                tableBody.appendChild(row);
-            });
-        }
-        
-        function showStatus(message, isError = false) {
-            const loginStatus = document.getElementById('loginStatus');
-            const loginStatusText = document.getElementById('loginStatusText');
-            const icon = loginStatus.querySelector('i');
-            
-            loginStatusText.textContent = message;
-            if(isError) {
-                icon.className = 'fas fa-times-circle';
-                icon.style.color = 'var(--error)';
-            } else {
-                icon.className = 'fas fa-check-circle';
-                icon.style.color = 'var(--success)';
-            }
-
-            loginStatus.classList.add('active');
-            setTimeout(() => {
-                loginStatus.classList.remove('active');
-            }, 3000);
-        }
-
-        function updateUIForLoginState() {
-            const adminControls = document.getElementById('adminControls');
-            const mainButtons = document.getElementById('mainButtons');
-            const adminNameDisplay = document.getElementById('adminNameDisplay');
-            const adminForm = document.querySelector('.admin-form');
-            const scoreForm = document.getElementById('scoreForm');
-            const scoreDisplay = document.getElementById('scoreDisplay');
-            
-            if (systemData.isAdminLoggedIn) {
-                adminControls.style.display = 'block';
-                mainButtons.style.display = 'none';
-                scoreForm.style.display = 'none';
-                scoreDisplay.style.display = 'none';
-                adminNameDisplay.textContent = adminCredentials.username;
-                adminForm.style.display = 'none'; 
-                renderStudentTable();
-            } else {
-                adminControls.style.display = 'none';
-                mainButtons.style.display = 'grid';
-                adminNameDisplay.textContent = '未登录';
-                adminForm.style.display = 'flex'; 
-            }
-        }
-
-        // DOMContentLoaded事件监听器
-        document.addEventListener('DOMContentLoaded', () => {
-            loadSystemData();
-            updateUIForLoginState();
-
-            const loginBtn = document.getElementById('loginBtn');
-            const logoutBtn = document.getElementById('logoutBtn');
-            const scoreQueryBtn = document.getElementById('scoreQueryBtn');
-            const submitScoreQueryBtn = document.getElementById('submitScoreQuery');
-            const backToQueryBtn = document.getElementById('backToQuery');
-            const addScoreBtn = document.getElementById('addScoreBtn');
-            const tableBody = document.getElementById('studentTableBody');
-            
-            // 登录
-            loginBtn.addEventListener('click', () => {
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-                if (username === adminCredentials.username && password === adminCredentials.password) {
-                    systemData.isAdminLoggedIn = true;
-                    showStatus('管理员登录成功！');
-                    updateUIForLoginState();
-                } else {
-                    showStatus('账号或密码错误！', true);
-                }
-            });
-            
-            // 登出
-            logoutBtn.addEventListener('click', () => {
-                systemData.isAdminLoggedIn = false;
-                showStatus('已退出登录。');
-                updateUIForLoginState();
-            });
-            
-            // 显示成绩查询表单
-            scoreQueryBtn.addEventListener('click', () => {
-                document.getElementById('mainButtons').style.display = 'none';
-                document.getElementById('scoreForm').style.display = 'block';
-                document.getElementById('scoreDisplay').style.display = 'none';
-            });
-            
-            // 返回主菜单/查询表单
-            backToQueryBtn.addEventListener('click', () => {
-                document.getElementById('mainButtons').style.display = 'grid';
-                document.getElementById('scoreForm').style.display = 'none';
-                document.getElementById('scoreDisplay').style.display = 'none';
-            });
-            
-            // 提交成绩查询
-            submitScoreQueryBtn.addEventListener('click', () => {
-                const name = document.getElementById('name').value.trim();
-                const examNumber = document.getElementById('examNumber').value.trim();
-                
-                if (!name || !examNumber) {
-                    showStatus('姓名和准考证号不能为空！', true);
-                    return;
-                }
-                
-                const studentRecords = systemData.studentScores.filter(s => s.name === name && s.id === examNumber);
-                
-                if (studentRecords.length > 0) {
-                    document.getElementById('scoreForm').style.display = 'none';
-                    document.getElementById('scoreDisplay').style.display = 'block';
-                    
-                    document.getElementById('studentNameDisplay').textContent = studentRecords[0].name;
-                    document.getElementById('examNumberDisplay').textContent = studentRecords[0].id;
-                    
-                    const scoresContainer = document.getElementById('scoresResultContainer');
-                    scoresContainer.innerHTML = '';
-                    let allPass = true;
-                    
-                    studentRecords.forEach(record => {
-                        const pass = record.score >= 60;
-                        if (!pass) allPass = false;
-                        
-                        scoresContainer.innerHTML += `
-                            <div class="subject-card">
-                                <div class="subject-name">${record.subject}</div>
-                                <div class="score-value" style="color: ${pass ? 'var(--success)' : 'var(--error)'}">${record.score}</div>
-                                <div class="score-label">分数</div>
-                                <div class="pass-status ${pass ? 'pass' : 'fail'}">${pass ? '合格' : '不合格'}</div>
-                                <div class="exam-details">
-                                    <h3>考试详情</h3>
-                                    <div class="detail-row">
-                                        <div class="detail-label">考试日期：</div>
-                                        <div class="detail-value">${record.examDate}</div>
-                                    </div>
-                                    <div class="detail-row">
-                                        <div class="detail-label">考试地点：</div>
-                                        <div class="detail-value">${record.examLocation}</div>
-                                    </div>
-                                    <div class="detail-row">
-                                        <div class="detail-label">合格标准：</div>
-                                        <div class="detail-value">60分及以上</div>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    });
-
-                    const summaryResult = document.getElementById('summaryResult');
-                    const certificateBtn = document.getElementById('certificateBtn');
-                    if (allPass) {
-                        summaryResult.innerHTML = `<h3>总评</h3><p>恭喜您！所有科目均已达到合格标准，可以获取会计专业技术资格证书。</p>`;
-                        certificateBtn.style.display = 'inline-flex';
-                    } else {
-                        summaryResult.innerHTML = `<h3>总评</h3><p>很遗憾，您有科目未达到合格标准，请继续努力。</p>`;
-                        certificateBtn.style.display = 'none';
-                    }
-                } else {
-                    showStatus('未查询到该考生成绩，请检查输入信息。', true);
-                }
-            });
-            
-            // 管理员添加成绩
-            addScoreBtn.addEventListener('click', () => {
-                const name = document.getElementById('adminStudentName').value.trim();
-                const id = document.getElementById('adminStudentId').value.trim();
-                const subject = document.getElementById('adminSubject').value;
-                const score = document.getElementById('adminScore').value;
-
-                if (!name || !id || !subject || score === '') {
-                    showStatus('请填写所有字段！', true);
-                    return;
-                }
-                
-                systemData.studentScores.push({
-                    name: name,
-                    id: id,
-                    subject: subject,
-                    score: parseInt(score),
-                    examDate: 'N/A',
-                    examLocation: 'N/A'
-                });
-                
-                saveSystemData();
-                renderStudentTable();
-                showStatus('成绩添加成功！');
-                
-                // 清空输入框
-                document.getElementById('adminStudentName').value = '';
-                document.getElementById('adminStudentId').value = '';
-                document.getElementById('adminScore').value = '';
-            });
-            
-            // 删除成绩（事件委托）
-            tableBody.addEventListener('click', (e) => {
-                if (e.target.closest('.delete-btn')) {
-                    const button = e.target.closest('.delete-btn');
-                    const index = button.dataset.index;
-                    if (confirm('确定要删除这条成绩记录吗？')) {
-                        systemData.studentScores.splice(index, 1);
-                        saveSystemData();
-                        renderStudentTable();
-                        showStatus('记录已删除。');
-                    }
-                }
-            });
-        });
-    </script>
 </body>
 </html>
