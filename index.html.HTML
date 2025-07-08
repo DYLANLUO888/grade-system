@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brand Authorization Certificate</title>
+    <title>Nobis Brand Authorization Certificate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: #f8f9fa;
-            color: #212529;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #333;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -24,165 +25,260 @@
         
         .certificate-container {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             background: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             position: relative;
-            border-radius: 4px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
         }
         
-        /* Certificate Header */
+        .certificate-container:hover {
+            transform: translateY(-5px);
+        }
+        
         .certificate-header {
-            background: #fff;
-            padding: 40px 40px 20px;
+            background: linear-gradient(to right, #1a2a4f, #2c3e6a);
+            padding: 40px 40px 30px;
             text-align: center;
-            border-bottom: 1px solid #e9ecef;
+            color: white;
+            position: relative;
+            overflow: hidden;
         }
         
-        .certificate-header h1 {
-            font-size: 2.2rem;
+        .header-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255,255,255,0.8) 1px, transparent 1px),
+                radial-gradient(circle at 90% 80%, rgba(255,255,255,0.8) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        .brand-logo {
+            position: relative;
+            z-index: 2;
             margin-bottom: 15px;
+        }
+        
+        .brand-logo h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .certificate-title {
+            position: relative;
+            z-index: 2;
+            font-size: 1.8rem;
             font-weight: 400;
-            color: #212529;
-            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.9);
         }
         
         .status-badge {
-            color: #28a745;
-            font-size: 1.3rem;
-            font-weight: 500;
+            position: relative;
+            z-index: 2;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 10px;
+            gap: 10px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 15px;
         }
         
-        /* Certificate Content */
+        .status-badge i {
+            color: #4ade80;
+            font-size: 1.4rem;
+        }
+        
         .certificate-content {
             padding: 40px;
-            text-align: center;
         }
         
         .authorization-date {
-            font-size: 2.5rem;
-            font-weight: 500;
-            color: #212529;
+            text-align: center;
             margin-bottom: 40px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 4px;
+            padding: 25px;
+            background: linear-gradient(to right, #f8fafc, #f1f5f9);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
         }
         
-        .authorization-date span {
-            color: #28a745;
-            font-weight: 600;
+        .date-label {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .date-value {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #1e40af;
+            letter-spacing: 1px;
         }
         
         .key-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 25px;
             margin-bottom: 40px;
         }
         
         .info-card {
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 4px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            border-left: 4px solid #1e40af;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
         }
         
         .info-title {
             font-size: 1rem;
-            color: #6c757d;
+            color: #64748b;
             margin-bottom: 15px;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .info-content {
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: #212529;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
         }
         
         .info-content.highlight {
-            color: #28a745;
+            color: #1e40af;
         }
         
-        /* Detailed Info */
         .details-section {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
             padding: 25px 0;
         }
         
         .detail-row {
             display: flex;
-            padding: 15px 0;
-            border-bottom: 1px solid #e9ecef;
-            font-size: 1.05rem;
+            padding: 18px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 1.1rem;
         }
         
         .detail-label {
             flex: 1;
             text-align: left;
             font-weight: 500;
-            color: #495057;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .detail-value {
             flex: 2;
             text-align: left;
-            color: #212529;
+            color: #1e293b;
+            font-weight: 500;
         }
         
         .legal-section {
-            background: #f1f3f5;
+            background: #f1f5f9;
             padding: 30px;
             margin-top: 40px;
             text-align: left;
-            border-radius: 4px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
         }
         
         .legal-title {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            color: #212529;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .legal-text {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #495057;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #475569;
         }
         
         .legal-text strong {
-            color: #212529;
-            font-weight: 500;
+            color: #1e40af;
+            font-weight: 600;
         }
         
         .certificate-footer {
             padding: 25px;
             text-align: center;
-            color: #6c757d;
-            font-size: 0.9rem;
-            background: #fff;
-            border-top: 1px solid #e9ecef;
+            color: #64748b;
+            font-size: 0.95rem;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .verification-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 500;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            .certificate-header, .certificate-content {
+            .certificate-header {
+                padding: 30px 20px;
+            }
+            
+            .brand-logo h1 {
+                font-size: 2.2rem;
+            }
+            
+            .certificate-title {
+                font-size: 1.5rem;
+            }
+            
+            .certificate-content {
                 padding: 25px;
             }
             
-            .certificate-header h1 {
-                font-size: 1.8rem;
+            .authorization-date {
+                padding: 20px;
             }
             
-            .authorization-date {
-                font-size: 2rem;
+            .date-value {
+                font-size: 2.2rem;
             }
             
             .key-info {
@@ -191,31 +287,35 @@
             
             .detail-row {
                 flex-direction: column;
-                gap: 5px;
+                gap: 8px;
             }
             
             .detail-label, .detail-value {
                 flex: auto;
                 text-align: left;
             }
+            
+            .certificate-footer {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
         
         @media (max-width: 480px) {
-            .certificate-header h1 {
-                font-size: 1.6rem;
+            .brand-logo h1 {
+                font-size: 1.8rem;
             }
             
-            .certificate-content {
-                padding: 20px;
+            .certificate-title {
+                font-size: 1.3rem;
             }
             
-            .authorization-date {
-                font-size: 1.6rem;
-                padding: 15px;
+            .date-value {
+                font-size: 1.8rem;
             }
             
             .info-content {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
             
             .legal-section {
@@ -228,8 +328,13 @@
     <div class="certificate-container">
         <!-- Certificate Header -->
         <div class="certificate-header">
-            <h1>Brand Authorization Certificate</h1>
+            <div class="header-pattern"></div>
+            <div class="brand-logo">
+                <h1>NOBIS</h1>
+            </div>
+            <div class="certificate-title">Brand Authorization Certificate</div>
             <div class="status-badge">
+                <i class="fas fa-shield-check"></i>
                 Authorization Verified Successfully
             </div>
         </div>
@@ -237,65 +342,104 @@
         <!-- Certificate Content -->
         <div class="certificate-content">
             <div class="authorization-date">
-                Authorization Date: <span>July 5, 2025</span>
+                <div class="date-label">Authorization Date</div>
+                <div class="date-value">July 5, 2025</div>
             </div>
             
             <div class="key-info">
                 <div class="info-card">
-                    <div class="info-title">Authorization Number</div>
-                    <div class="info-content">EL-VHI-2025-0705-A372</div>
+                    <div class="info-title">
+                        <i class="fas fa-hashtag"></i>
+                        Authorization Number
+                    </div>
+                    <div class="info-content">NB-VHI-2025-0705-A372</div>
                 </div>
                 
                 <div class="info-card">
-                    <div class="info-title">Authorization Status</div>
+                    <div class="info-title">
+                        <i class="fas fa-badge-check"></i>
+                        Authorization Status
+                    </div>
                     <div class="info-content highlight">Active</div>
                 </div>
                 
                 <div class="info-card">
-                    <div class="info-title">Authorization Period</div>
+                    <div class="info-title">
+                        <i class="fas fa-calendar-alt"></i>
+                        Authorization Period
+                    </div>
                     <div class="info-content">1 Year</div>
                 </div>
             </div>
             
             <div class="details-section">
                 <div class="detail-row">
-                    <div class="detail-label">Licensor</div>
-                    <div class="detail-value">ERNO LASZLO, INC.</div>
+                    <div class="detail-label">
+                        <i class="fas fa-crown"></i>
+                        Licensor
+                    </div>
+                    <div class="detail-value">NOBIS GROUP INC.</div>
                 </div>
                 <div class="detail-row">
-                    <div class="detail-label">Licensee</div>
+                    <div class="detail-label">
+                        <i class="fas fa-building"></i>
+                        Licensee
+                    </div>
                     <div class="detail-value">VINTAGEHAOY INC</div>
                 </div>
                 <div class="detail-row">
-                    <div class="detail-label">Authorized Products</div>
-                    <div class="detail-value">All ERNO LASZLO branded products</div>
+                    <div class="detail-label">
+                        <i class="fas fa-box-open"></i>
+                        Authorized Products
+                    </div>
+                    <div class="detail-value">All NOBIS branded products</div>
                 </div>
                 <div class="detail-row">
-                    <div class="detail-label">Sales Territory</div>
+                    <div class="detail-label">
+                        <i class="fas fa-globe-americas"></i>
+                        Sales Territory
+                    </div>
                     <div class="detail-value">Worldwide</div>
                 </div>
                 <div class="detail-row">
-                    <div class="detail-label">Sales Channels</div>
+                    <div class="detail-label">
+                        <i class="fas fa-store"></i>
+                        Sales Channels
+                    </div>
                     <div class="detail-value">Exclusively through SHEIN platform</div>
                 </div>
                 <div class="detail-row">
-                    <div class="detail-label">Authorization Term</div>
+                    <div class="detail-label">
+                        <i class="fas fa-calendar-day"></i>
+                        Authorization Term
+                    </div>
                     <div class="detail-value">July 5, 2025 - July 4, 2026</div>
                 </div>
             </div>
             
             <div class="legal-section">
-                <div class="legal-title">Legal Validity Statement</div>
+                <div class="legal-title">
+                    <i class="fas fa-gavel"></i>
+                    Legal Validity Statement
+                </div>
                 <div class="legal-text">
-                    <p>This Authorization Certificate has been issued in accordance with the laws of the State of Delaware, United States and remains legally binding and enforceable.</p>
+                    <p>This Authorization Certificate has been issued in accordance with Canadian corporate law and remains legally binding and enforceable.</p>
                     
-                    <p>The authorization granted to <strong>VINTAGEHAOY INC</strong> by <strong>ERNO LASZLO, INC.</strong> is confirmed as valid and in effect as of the authorization date stated above.</p>
+                    <p>The authorization granted to <strong>VINTAGEHAOY INC</strong> by <strong>NOBIS GROUP INC.</strong> is confirmed as valid and in effect as of the authorization date stated above.</p>
+                    
+                    <p>Any unauthorized use of the Nobis brand outside the terms of this agreement constitutes infringement and will be subject to legal action.</p>
                 </div>
             </div>
         </div>
         
         <div class="certificate-footer">
-            Brand Authorization Certificate Verification System © 2023 | Electronically generated document
+            <div class="copyright">
+                Brand Authorization Certificate Verification System © 2025
+            </div>
+            <div class="verification-badge">
+                <i class="fas fa-lock"></i>
+                Electronically Signed & Secured
+            </div>
         </div>
     </div>
 </body>
