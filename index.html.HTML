@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nobis Brand Authorization Certificate</title>
+    <title>UMIK Brand Authorization Certificate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,8 +14,8 @@
         }
         
         body {
-            background: #f8f9fa;
-            color: #212529;
+            background: linear-gradient(to bottom, #f5f7fa, #e8ecf1);
+            color: #333;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -24,197 +25,277 @@
         
         .certificate-container {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
             overflow: hidden;
-        }
-        
-        /* Certificate Header */
-        .certificate-header {
-            background: #1a3c6c;
-            color: white;
-            padding: 30px;
-            text-align: center;
             position: relative;
         }
         
-        .certificate-header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+        .certificate-header {
+            background: linear-gradient(135deg, #1a3c6c 0%, #2c3e6a 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        .certificate-header p {
-            font-size: 1.1rem;
+        .header-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%);
+            background-size: 30px 30px;
+            opacity: 0.2;
+        }
+        
+        .brand-title {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 15px;
+        }
+        
+        .brand-title h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .certificate-title {
+            position: relative;
+            z-index: 2;
+            font-size: 1.8rem;
+            font-weight: 300;
             opacity: 0.9;
+            margin-bottom: 20px;
         }
         
         .status-badge {
-            background: #28a745;
-            color: white;
-            padding: 8px 25px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: 500;
+            position: relative;
+            z-index: 2;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 20px;
+            gap: 12px;
+            background: rgba(255,255,255,0.15);
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-top: 25px;
+            backdrop-filter: blur(5px);
         }
         
-        /* Certificate Content */
         .certificate-content {
-            padding: 40px;
+            padding: 50px 40px;
         }
         
-        .authorization-info {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
+        .date-highlight {
+            background: linear-gradient(to right, #e6f0ff, #d4e5ff);
+            padding: 25px 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 40px;
+            border-left: 5px solid #2563eb;
+        }
+        
+        .date-label {
+            font-size: 1.2rem;
+            color: #64748b;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .date-value {
+            font-size: 2.5rem;
+            color: #2563eb;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .date-period {
+            font-size: 1.2rem;
+            color: #64748b;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        
+        .key-info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-bottom: 40px;
         }
         
         .info-card {
-            flex: 1;
-            min-width: 250px;
-            padding: 20px;
-            border: 1px solid #e9ecef;
+            padding: 25px;
+            background: #f8fafc;
             border-radius: 8px;
+            border: 1px solid #e2e8f0;
         }
         
         .info-title {
-            font-size: 0.95rem;
-            color: #6c757d;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 15px;
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
         
         .info-content {
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: #212529;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #1e293b;
         }
         
-        .highlight {
-            color: #28a745;
+        .status-value {
+            color: #16a34a;
+            font-weight: 700;
+        }
+        
+        .contract-details {
+            background: #f1f5f9;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border: 1px solid #d1e0e7;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1e3a8a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-content {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #475569;
+        }
+        
+        .section-content strong {
+            color: #1e293b;
             font-weight: 600;
         }
         
-        .authorization-date-card {
-            background: #f1f8ff;
-            border-color: #cfe2ff;
-            margin-top: 20px;
+        .section-content ul {
+            padding-left: 25px;
+            margin: 15px 0;
         }
         
-        .authorization-date-card .info-content {
-            font-size: 1.8rem;
-            color: #0d6efd;
+        .section-content ul li {
+            margin-bottom: 10px;
         }
         
-        .details-section {
-            margin-bottom: 40px;
-        }
-        
-        .detail-row {
+        .parties-info {
             display: flex;
-            padding: 15px 0;
-            border-bottom: 1px solid #e9ecef;
-            font-size: 1.05rem;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
         }
         
-        .detail-label {
+        .party-card {
             flex: 1;
-            text-align: left;
-            font-weight: 500;
-            color: #495057;
-        }
-        
-        .detail-value {
-            flex: 2;
-            text-align: left;
-            color: #212529;
-        }
-        
-        .legal-section {
-            background: #f8f9fa;
-            padding: 25px;
+            min-width: 300px;
+            padding: 20px;
+            background: #f1f5f9;
             border-radius: 8px;
-            margin-top: 30px;
-            border-left: 4px solid #1a3c6c;
+            border: 1px solid #d1e0e7;
         }
         
-        .legal-title {
+        .party-title {
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 15px;
-            color: #1a3c6c;
-        }
-        
-        .legal-text {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: #495057;
-        }
-        
-        .legal-text strong {
-            color: #212529;
-            font-weight: 600;
+            color: #1e3a8a;
         }
         
         .certificate-footer {
-            padding: 25px;
+            padding: 30px;
             text-align: center;
-            color: #6c757d;
-            font-size: 0.9rem;
-            background: #f8f9fa;
-            border-top: 1px solid #e9ecef;
+            color: #64748b;
+            font-size: 1rem;
+            background: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .verification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-weight: 500;
         }
         
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .certificate-header {
-                padding: 25px 20px;
+        @media (max-width: 900px) {
+            .parties-info {
+                flex-direction: column;
             }
             
-            .certificate-header h1 {
-                font-size: 1.8rem;
+            .party-card {
+                min-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .certificate-header {
+                padding: 30px 20px;
+            }
+            
+            .brand-title h1 {
+                font-size: 2.8rem;
+            }
+            
+            .certificate-title {
+                font-size: 1.4rem;
+            }
+            
+            .status-badge {
+                font-size: 1.1rem;
+                padding: 10px 25px;
             }
             
             .certificate-content {
                 padding: 30px;
             }
             
-            .info-content {
-                font-size: 1.2rem;
+            .date-value {
+                font-size: 2rem;
             }
             
-            .authorization-date-card .info-content {
-                font-size: 1.5rem;
-            }
-            
-            .detail-row {
-                flex-direction: column;
-                gap: 5px;
+            .key-info-cards {
+                grid-template-columns: 1fr;
             }
         }
         
         @media (max-width: 480px) {
-            .certificate-header h1 {
-                font-size: 1.6rem;
+            .brand-title h1 {
+                font-size: 2.3rem;
             }
             
-            .certificate-content {
-                padding: 20px;
+            .date-value {
+                font-size: 1.8rem;
             }
             
-            .authorization-info {
-                flex-direction: column;
+            .info-content {
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -223,75 +304,119 @@
     <div class="certificate-container">
         <!-- Certificate Header -->
         <div class="certificate-header">
-            <h1>Nobis Brand Authorization Certificate</h1>
-            <p>Official Authorization Document</p>
+            <div class="header-pattern"></div>
+            <div class="brand-title">
+                <h1>UMIK</h1>
+            </div>
+            <div class="certificate-title">Brand Authorization Certificate</div>
             <div class="status-badge">
+                <i class="fas fa-check-circle"></i>
                 Authorization Verified Successfully
             </div>
         </div>
         
         <!-- Certificate Content -->
         <div class="certificate-content">
-            <div class="authorization-info">
+            <div class="date-highlight">
+                <div class="date-label">Authorization Effective Date</div>
+                <div class="date-value">July 5, 2025</div>
+                <div class="date-period">Authorization Period: 1 Year</div>
+            </div>
+            
+            <div class="key-info-cards">
                 <div class="info-card">
                     <div class="info-title">Authorization Number</div>
-                    <div class="info-content">NOBIS-VHI-2025-Q3-9876</div>
+                    <div class="info-content">SHEINA10.336979</div>
                 </div>
                 
                 <div class="info-card">
                     <div class="info-title">Authorization Status</div>
-                    <div class="info-content highlight">Active</div>
+                    <div class="info-content status-value">Active</div>
                 </div>
                 
-                <div class="info-card authorization-date-card">
-                    <div class="info-title">Authorization Date</div>
-                    <div class="info-content">July 5, 2025</div>
+                <div class="info-card">
+                    <div class="info-title">Sales Territory</div>
+                    <div class="info-content">Worldwide</div>
                 </div>
             </div>
             
-            <div class="details-section">
-                <div class="detail-row">
-                    <div class="detail-label">Licensor</div>
-                    <div class="detail-value">Nobis, INC.</div>
+            <div class="contract-details">
+                <div class="section-title">
+                    <i class="fas fa-file-contract"></i>
+                    Authorization Scope
                 </div>
-                <div class="detail-row">
-                    <div class="detail-label">Licensee</div>
-                    <div class="detail-value">VINTAGEHAOY INC</div>
-                </div>
-                <div class="detail-row">
-                    <div class="detail-label">Authorized Products</div>
-                    <div class="detail-value">All genuine Nobis-branded products</div>
-                </div>
-                <div class="detail-row">
-                    <div class="detail-label">Sales Territory</div>
-                    <div class="detail-value">Worldwide</div>
-                </div>
-                <div class="detail-row">
-                    <div class="detail-label">Sales Channels</div>
-                    <div class="detail-value">Exclusively through SHEIN platform</div>
-                </div>
-                <div class="detail-row">
-                    <div class="detail-label">Authorization Term</div>
-                    <div class="detail-value">July 5, 2025 - July 4, 2026 (1 Year)</div>
+                <div class="section-content">
+                    <p>UMIK, INC. grants VINTAGEHAOY INC the authorization to sell all genuine products under the UMIK brand including all current and future UMIK branded products.</p>
+                    
+                    <p>This authorization includes the right to:</p>
+                    <ul>
+                        <li>Use the UMIK brand name and trademarks</li>
+                        <li>Sell UMIK products exclusively through the SHEIN platform</li>
+                        <li>Market UMIK products worldwide</li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="legal-section">
-                <div class="legal-title">Authorization Terms</div>
-                <div class="legal-text">
-                    <p>This Authorization Certificate has been issued in accordance with the laws of the State of Delaware.</p>
+            <div class="contract-details">
+                <div class="section-title">
+                    <i class="fas fa-balance-scale"></i>
+                    Rights and Obligations
+                </div>
+                <div class="section-content">
+                    <p><strong>Brand Image:</strong> VINTAGEHAOY INC commits to strictly adhere to UMIK's brand guidelines and marketing policies, ensuring the maintenance of the brand's premium image.</p>
                     
-                    <p>The authorization granted to <strong>VINTAGEHAOY INC</strong> by <strong>Nobis, INC.</strong> is confirmed as valid and in effect as of the authorization date stated above.</p>
+                    <p><strong>Product Quality:</strong> VINTAGEHAOY INC commits to selling only genuine UMIK products obtained directly from UMIK, INC. or its designated suppliers.</p>
                     
-                    <p>The Licensee is authorized to market and sell all genuine Nobis-branded products exclusively through the SHEIN platform worldwide for a period of one year.</p>
+                    <p><strong>Intellectual Property:</strong> VINTAGEHAOY INC acknowledges UMIK, INC.'s exclusive ownership of its brand, trademarks, and all related intellectual property.</p>
                     
-                    <p>Any unauthorized use of the Nobis brand outside the terms of this agreement constitutes infringement and will be subject to legal action.</p>
+                    <p><strong>Marketing:</strong> All advertising or promotional activities require prior written approval from UMIK, INC.</p>
+                    
+                    <p><strong>Non-Transferability:</strong> This authorization is personal to VINTAGEHAOY INC and may not be assigned or transferred without UMIK, INC.'s written consent.</p>
+                </div>
+            </div>
+            
+            <div class="contract-details">
+                <div class="section-title">
+                    <i class="fas fa-gavel"></i>
+                    General Provisions
+                </div>
+                <div class="section-content">
+                    <p><strong>Term:</strong> This authorization is effective from July 5, 2025, and shall remain in effect for one year.</p>
+                    
+                    <p><strong>Termination:</strong> Either party may terminate this authorization with thirty (30) days' prior written notice for material breach by the other party.</p>
+                    
+                    <p><strong>Governing Law:</strong> This Agreement shall be governed by and construed in accordance with the laws of the State of Delaware.</p>
+                    
+                    <p><strong>Amendments:</strong> Any modification must be in writing and signed by authorized representatives of both parties.</p>
+                </div>
+            </div>
+            
+            <div class="parties-info">
+                <div class="party-card">
+                    <div class="party-title">Licensor</div>
+                    <div class="section-content">
+                        <p><strong>UMIK, INC.</strong></p>
+                        <p>A renowned cosmetics and beauty brand, holding legal ownership of its brand name, trademarks, product formulations, and related intellectual property.</p>
+                    </div>
+                </div>
+                
+                <div class="party-card">
+                    <div class="party-title">Licensee</div>
+                    <div class="section-content">
+                        <p><strong>VINTAGEHAOY INC</strong></p>
+                        <p>Authorized to sell UMIK products exclusively through the SHEIN platform under the terms of this agreement.</p>
+                    </div>
                 </div>
             </div>
         </div>
         
         <div class="certificate-footer">
-            Brand Authorization Certificate Verification System © 2025 | Electronically generated document
+            <div>This Brand Authorization Certificate is executed in two (2) original counterparts, each of which shall be deemed an original.</div>
+            <div class="verification-badge">
+                <i class="fas fa-lock"></i>
+                Electronically Signed & Secured
+            </div>
+            <div>Brand Authorization Certificate Verification System © 2025</div>
         </div>
     </div>
 </body>
